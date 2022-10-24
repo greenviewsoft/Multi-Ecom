@@ -185,6 +185,16 @@
       </script>
       <script src="{{ asset('/adminbackend/assets/js/index.js') }}"></script>
       <script src="{{ asset('/adminbackend/assets/js/validate.min.js') }}"></script>
+
+      <!--Datatable-->
+<script src="{{ asset('adminbackend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+<!--Datatable-->
+      <script src="{{ asset('/adminbackend/assets/js/validate.min.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('/adminbackend/assets/js/app.js') }}"></script>
 
@@ -213,6 +223,12 @@
      }
      @endif
     </script>
+
+{{-- Sweetalert --}}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script src="{{ asset('adminbackend/assets/js/code.js') }}"></script>
 
 </body>
 

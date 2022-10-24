@@ -56,7 +56,7 @@ class UserController extends Controller
 
 
         $notification = array(
-            'message' => 'User Login  Successfully',
+            'message' => 'User Logout Successfully',
             'alert-type' => 'success'
         );
 
