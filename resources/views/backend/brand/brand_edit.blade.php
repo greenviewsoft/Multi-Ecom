@@ -29,7 +29,7 @@
 	<div class="card">
 		<div class="card-body">
 
-            <form id="myForm" method="post" action="{{ route('update.brand',$item->id)) }}" enctype="multipart/form-data" >
+            <form id="myForm" method="post" action="{{ route('update.brand',$brands->id) }}" enctype="multipart/form-data" >
 			@csrf
        <input type="hidden" name="id"  value="{{ $brands->id }}">
        <input type="hidden" name="old_image"  value="{{ $brands->brand_image }}">

@@ -114,7 +114,7 @@ public function DeleteBrand($id)
 {
     $brand = Brand::findOrFail($id);
     $img = $brand->brand_image;
-    unlink($img );
+    unlink($img);
 
     Brand::findOrFail($id)->delete();
 
