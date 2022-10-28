@@ -70,7 +70,10 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 
 ////////// login Routes /////////
  Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
- Route::get('/vendor/login', [vendorController::class, 'VendorLogin']);
+ Route::get('/vendor/login', [vendorController::class, 'VendorLogin'])->name('vendor.login');
+ Route::get('/become/vendor', [vendorController::class, 'BecomeVendor'])->name('become.vendor');
+ Route::post('/vendor/register', [vendorController::class, 'VendorRegister'])->name('vendor.register');
+
 
 
  Route::middleware(['auth','role:admin'])->group(function() {
@@ -115,6 +118,11 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 
 
 
+ // All Inactive Vendor Route
+ Route::controller(AdminController::class)->group(function(){
+Route::get('/vendor/inactive', 'VendorInactive')->name('inactive.vendor');
+
+});
 
 
    }); // End Middleware
