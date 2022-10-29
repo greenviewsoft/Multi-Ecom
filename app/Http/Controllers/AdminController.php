@@ -103,4 +103,33 @@ class AdminController extends Controller
         $inActiveVendor = User::where('status','inactive')->where('role','vendor')->latest()->get();
         return view('backend.vendor.inactive_vendor',compact('inActiveVendor'));
     }// end method
+
+    public function ActiveVendor(){
+        $ActiveVendor = User::where('status','active')->where('role','vendor')->latest()->get();
+        return view('backend.vendor.active_vendor',compact('ActiveVendor'));
+
+    }// End Method
+
+    public function InactiveVendorDetails($id){
+
+        $inactiveVendorDetails = User::findOrFail($id);
+        return view('backend.vendor.inactive_vendor_details',compact('inactiveVendorDetails'));
+
+    }// End Method
+
+    public function ActiveVendorApprove(Request $request){
+
+        $verdor_id = $request->id;
+        $user = User::findOrFail($verdor_id)->update([
+            'status' => 'active',
+        ]);
+
+        $notification = array(
+            'message' => 'Vendor Active Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('active.vendor')->with($notification);
+
+    }// End Mehtod 
 }
