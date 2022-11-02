@@ -1,7 +1,8 @@
+
 @php
-	$id = Auth::user()->id;
-	$verdorId = App\Models\User::find($id);
-	$status = $verdorId->status;
+$id = Auth::user()->id;
+$verdorId = App\Models\User::find($id);
+$status = $verdorId->status;
 @endphp
 
 <div class="sidebar-wrapper" data-simplebar="true">
@@ -24,8 +25,8 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        @if($status === 'active')
 
+        @if($status === 'active')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
@@ -52,25 +53,8 @@
                 </li>
             </ul>
         </li>
+        @endif
 
-	@else
-        </li>
-        <li class="menu-label">Charts & Maps</li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-line-chart"></i>
-                </div>
-                <div class="menu-title">Charts</div>
-            </a>
-            <ul>
-                <li> <a href="charts-apex-chart.html"><i class="bx bx-right-arrow-alt"></i>Apex</a>
-                </li>
-                <li> <a href="charts-chartjs.html"><i class="bx bx-right-arrow-alt"></i>Chartjs</a>
-                </li>
-                <li> <a href="charts-highcharts.html"><i class="bx bx-right-arrow-alt"></i>Highcharts</a>
-                </li>
-            </ul>
-        </li>
         <li>
 
             <a href="" target="_blank">

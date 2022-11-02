@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
 
 /**\
 
@@ -128,6 +129,12 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     Route::post('/inactive/vendor/approve' , 'InActiveVendorApprove')->name('inactive.vendor.approve');
 });
 
+
+ // Product All Routes
+ Route::controller(ProductController::class)->group(function(){
+    Route::get('/all/product' , 'AllProduct')->name('all.product');
+    Route::get('/add/product' , 'AddProduct')->name('add.product');
+});
 
    }); // End Middleware
 
