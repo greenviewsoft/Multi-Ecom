@@ -26,4 +26,6 @@ class ProductController extends Controller
         return view('backend.product.product_add',compact('brands','categories','activeVendor'));
     } // End Method
 
+
+
 }
