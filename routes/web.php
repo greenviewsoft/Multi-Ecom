@@ -114,6 +114,7 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     Route::post('/update/Subcategory' , 'UpdateSubCategory')->name('update.subcategory');
     Route::get('/delete/subcategory/{id}' , 'DeleteSubCategory')->name('delete.subcategory');
 
+    Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
 
 });
 
