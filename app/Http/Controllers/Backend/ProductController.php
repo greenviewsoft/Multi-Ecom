@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image as Image;
 
-
 class ProductController extends Controller
 {
     public function AllProduct()
@@ -98,12 +97,13 @@ class ProductController extends Controller
 
     public function EditProduct($id)
     {
+        $multyImg = MultiImg::where('product_id', $id)->get();
         $activeVendor = User::where('status', 'active')->where('role', 'vendor')->latest()->get();
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
         $subcategory = SubCategory::latest()->get();
         $products = Product::findOrFail($id);
-        return view('backend.product.product_edit', compact('brands', 'categories', 'activeVendor', 'products', 'subcategory'));
+        return view('backend.product.product_edit', compact('brands', 'categories', 'activeVendor', 'products', 'subcategory', 'multyImg'));
     } // End Method
 
     public function UpdateProduct(Request $request)
@@ -150,33 +150,128 @@ class ProductController extends Controller
 
     } // End Method
 
-    public function UpdateProductThobonail(Request $request){
+    ////////////////////////// multi product image delete Start  ////////////////////////////////
+    public function DeleteProduct($id)
+    {
 
- $pro_id = $request->id;
- $old_image = $request->old_img;
+        $product = Product::findOrFail($id);
+        unlink($product->product_thambnail);
+        Product::findOrFail($id)->delete();
 
- $image = $request->file('product_thambnail');
- $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
- Image::make($image)->resize(800, 800)->save('upload/products/thumbnail/' . $name_gen);
- $save_url = 'upload/products/thumbnail/' . $name_gen;
+        $images = MultiImg::where('product_id', $product->id)->get();
+        foreach ($images as $img) {
+            unlink($img->photo_name);
+            MultiImg::where('product_id', $id)->delete();
+        }
 
- if (file_exists($old_image)) {
-    unlink($old_image);
- }
+        $notification = array(
+            'message' => 'Products Deleted Successfully',
+            'alert-type' => 'success',
+        );
 
-Product::findOrfail($pro_id)->update([
-    'product_thambnail' => $save_url,
-    'updated_at' => Carbon::now(),
-]);
+        return redirect()->back()->with($notification);
 
-$notification = array(
-    'message' => 'Product Thobonail Updated   Successfully',
-    'alert-type' => 'success',
-);
+    } // End Method
+    ////////////////////////// multi product image deletes end  ////////////////////////////////
 
-return redirect()->back()->with($notification);
+    public function UpdateProductThobonail(Request $request)
+    {
 
+        $pro_id = $request->id;
+        $old_image = $request->old_img;
 
-    }   //end method
+        $image = $request->file('product_thambnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 800)->save('upload/products/thumbnail/' . $name_gen);
+        $save_url = 'upload/products/thumbnail/' . $name_gen;
+
+        if (file_exists($old_image)) {
+            unlink($old_image);
+        }
+
+        Product::findOrfail($pro_id)->update([
+            'product_thambnail' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Product Thobonail Updated   Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } //end method
+
+    /////////////////// Multi image update method //////////////////////////
+
+    public function UpdateProductMultiimage(Request $request)
+    {
+
+        $imgs = $request->multi_img;
+
+        foreach ($imgs as $id => $img) {
+            $imgDel = MultiImg::findOrFail($id);
+            unlink($imgDel->photo_name);
+
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(800, 800)->save('upload/products/multi-image/' . $make_name);
+            $uploadPath = 'upload/products/multi-image/' . $make_name;
+
+            MultiImg::where('id', $id)->update([
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+
+            ]);
+        } // end foreach
+
+        $notification = array(
+            'message' => 'Product Multi Image Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function ProductMultiimageDelete($id)
+    {
+
+        $MultiImg = MultiImg::findOrFail($id);
+        $img = $MultiImg->photo_name;
+        unlink($img);
+
+        MultiImg::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'multi Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end method
+
+    public function ProductInactive($id)
+    {
+        Product::findOrFail($id)->update(['status' => 0]);
+
+        $notification = array(
+            'message' => 'Product Inactive Successfully',
+            'alert-type' => 'success');
+
+        return redirect()->back()->with($notification);
+    } // End Method
+
+    public function ProductActive($id)
+    {
+        Product::findOrFail($id)->update(['status' => 1]);
+
+        $notification = array(
+            'message' => 'Product active Successfully',
+            'alert-type' => 'success');
+
+        return redirect()->back()->with($notification);
+    } // End Method
 
 }
