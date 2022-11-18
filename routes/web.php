@@ -138,7 +138,12 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     Route::post('/store/product' , 'StoreProduct')->name('store.product');
     Route::get('/edit/product/{id}' , 'EditProduct')->name('edit.product');
     Route::post('/update/product' , 'UpdateProduct')->name('update.product');
+    Route::get('/delete/product/{id}' , 'DeleteProduct')->name('delete.product');
     Route::post('/update/product/thombonail' , 'UpdateProductThobonail')->name('update.product.thobonail');
+    Route::post('/update/product/multiimage' , 'UpdateProductMultiimage')->name('update.product.multiimage');
+    Route::get('/delete/product/multiimage/{id}' , 'ProductMultiimageDelete')->name('delete.product.multiimage');
+    Route::get('/product/inactive/{id}' , 'ProductInactive')->name('product.inactive');
+    Route::get('/product/active/{id}' , 'ProductActive')->name('product.active');
 });
 
 

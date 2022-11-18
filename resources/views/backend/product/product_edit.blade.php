@@ -244,6 +244,51 @@
 
     {{-- //// Main Thabonail Update end //// --}}
 
+
+        {{-- //// Multi Image Update  Start  //// --}}
+        <div class="page-content">
+            <h6 class="mb-0 text-uppercase">Update Multi Image</h6>
+            <hr>
+    <div class="card">
+        <div class="card-body">
+            <table class="table mb-0 table-striped">
+                <thead>
+
+
+                    <tr>
+                        <th scope="col">#Sl</th>
+                        <th scope="col">image</th>
+                        <th scope="col">Change</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    <form method="post" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data" >
+                        @csrf
+                    @foreach ($multyImg as $key => $item)
+        <tr>
+            <th scope="row">{{ $key+1 }}</th>
+            <td><img src="{{ asset($item->photo_name) }}" style="width: "width="70px;" height="40px;"> </td>
+            <td> <input type="file" class="form-group" name="multi_img[{{ $item->id }}]"> </td>
+
+
+            <td>
+                <input type="submit" class="btn btn-primary px-4" value="Update Image " />
+<a href="{{ route('delete.product.multiimage',$item->id) }}" id="delete" class="btn btn-danger"> Delete </a>
+
+            </td>
+        </tr>
+        @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+        {{-- //// Multi Image Update end //// --}}
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#myForm').validate({
