@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 /**\
@@ -68,7 +69,18 @@ Route::middleware(['auth','role:vendor'])->group(function(){
    Route::get('/vendor/change/password', [vendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
    Route::post('/vendor/update/password', [vendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
 
+   // Vendor Add Product All Route
+Route::controller(VendorProductController::class)->group(function(){
+    Route::get('/vendor/all/products' , 'VendorAllProduct')->name('vendor.all.product');
+    Route::get('/vendor/add/products' , 'VendorAddProduct')->name('vendor.add.product');
+
+
+    Route::get('/vendor/subcategory/ajax/{category_id}' , 'VendorGetSubCategory');
+
+
 });
+
+}); // end Groups Middleware
 
 ////////// login Routes /////////
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class);
@@ -149,5 +161,9 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('ven
 });
 
 
+
+
+
    }); // End Middleware
+
 
