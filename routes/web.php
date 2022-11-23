@@ -73,7 +73,9 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/all/products' , 'VendorAllProduct')->name('vendor.all.product');
     Route::get('/vendor/add/products' , 'VendorAddProduct')->name('vendor.add.product');
-
+    Route::post('/vendor/store/products' , 'VendorStoreProduct')->name('vendor.store.product');
+    Route::get('/vendor/edit/products/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
+    Route::post('/vendor/update/products' , 'VendorUpdateProduct')->name('vendor.update.product');
 
     Route::get('/vendor/subcategory/ajax/{category_id}' , 'VendorGetSubCategory');
 

@@ -26,7 +26,7 @@
 	  <hr/>
 
 
-<form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data" >
+<form id="myForm" method="post" action="{{ route('vendor.store.product') }}" enctype="multipart/form-data" >
     @csrf
 
        <div class="form-body mt-4">
