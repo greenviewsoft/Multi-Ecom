@@ -76,6 +76,8 @@ Route::controller(VendorProductController::class)->group(function(){
     Route::post('/vendor/store/products' , 'VendorStoreProduct')->name('vendor.store.product');
     Route::get('/vendor/edit/products/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
     Route::post('/vendor/update/products' , 'VendorUpdateProduct')->name('vendor.update.product');
+    Route::post('/vendor/update/product/thumbnail' , 'VendorUpdateProductThumbnail')->name('vendor.update.product.thobonail');
+    Route::post('/vendor/update/product/multiimage' , 'VendorUpdateProductMultiimage')->name('vendor.update.product.multiimage');
 
     Route::get('/vendor/subcategory/ajax/{category_id}' , 'VendorGetSubCategory');
 

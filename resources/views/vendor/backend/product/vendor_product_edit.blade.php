@@ -205,12 +205,12 @@
 
     </div>
 
-    {{-- //// Main Thabonail Update Image //// --}}
+    {{-- //// Main Thumbnail Update Image //// --}}
     <div class="page-content">
         <h6 class="mb-0 text-uppercase">Update Main Image Thumbnail</h6>
         <hr>
         <div class="card">
-            <form  method="post" action="{{ route('update.product.thobonail') }}" enctype="multipart/form-data">
+            <form  method="post" action="{{ route('vendor.update.product.thobonail') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $products->id }}">
                 <input type="hidden" name="old_img" value="{{ $products->product_thambnail }}">
@@ -255,7 +255,7 @@
                 </thead>
                 <tbody>
 
-                    <form method="post" action="{{ route('update.product.multiimage') }}" enctype="multipart/form-data" >
+                    <form method="post" action="{{ route('vendor.update.product.multiimage') }}" enctype="multipart/form-data" >
                         @csrf
                     @foreach ($multyImg as $key => $item)
         <tr>

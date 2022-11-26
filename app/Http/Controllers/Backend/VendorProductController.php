@@ -163,4 +163,66 @@ class VendorProductController extends Controller
         return redirect()->route('vendor.all.product')->with($notification);
 
     } // End Method
+
+
+    public function VendorUpdateProductThumbnail(Request $request)
+    {
+
+        $pro_id = $request->id;
+        $old_image = $request->old_img;
+
+        $image = $request->file('product_thambnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 800)->save('upload/products/thumbnail/' . $name_gen);
+        $save_url = 'upload/products/thumbnail/' . $name_gen;
+
+        if (file_exists($old_image)) {
+            unlink($old_image);
+        }
+
+        Product::findOrfail($pro_id)->update([
+            'product_thambnail' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Vendor Product Thobonail Updated   Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } //end method
+
+
+    /////////////////// vendor Multi image update method //////////////////////////
+
+    public function VendorUpdateProductMultiimage(Request $request)
+    {
+
+        $imgs = $request->multi_img;
+
+        foreach ($imgs as $id => $img) {
+            $imgDel = MultiImg::findOrFail($id);
+            unlink($imgDel->photo_name);
+
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(800, 800)->save('upload/products/multi-image/' . $make_name);
+            $uploadPath = 'upload/products/multi-image/' . $make_name;
+
+            MultiImg::where('id', $id)->update([
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+
+            ]);
+        } // end foreach
+
+        $notification = array(
+            'message' => 'Vendor Product Multi Image Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
 }
