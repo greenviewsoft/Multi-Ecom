@@ -225,4 +225,24 @@ class VendorProductController extends Controller
         return redirect()->back()->with($notification);
 
     } // End Method
+
+
+    public function VendorDeleteMultiimage($id)
+    {
+
+        $MultiImg = MultiImg::findOrFail($id);
+        $img = $MultiImg->photo_name;
+        unlink($img);
+
+        MultiImg::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Vendor multi Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end method
+
 }
