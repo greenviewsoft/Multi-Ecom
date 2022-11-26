@@ -79,6 +79,9 @@ Route::controller(VendorProductController::class)->group(function(){
     Route::post('/vendor/update/product/thumbnail' , 'VendorUpdateProductThumbnail')->name('vendor.update.product.thobonail');
     Route::post('/vendor/update/product/multiimage' , 'VendorUpdateProductMultiimage')->name('vendor.update.product.multiimage');
     Route::get('/vendor/multi/image/delete/products/{id}' , 'VendorDeleteMultiimage')->name('Vendor.delete.product.multiimage');
+    Route::get('/vendor/inactive/products/{id}' , 'VendorProductInactive')->name('vendor.product.inactive');
+    Route::get('/vendor/active/products/{id}' , 'VendorProductActive')->name('vendor.product.active');
+    Route::get('/vendor/Delete/products/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
 
     Route::get('/vendor/subcategory/ajax/{category_id}' , 'VendorGetSubCategory');
 
