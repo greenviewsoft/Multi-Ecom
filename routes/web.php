@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 /**\
@@ -182,6 +183,16 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('ven
        Route::get('/delete/slider/{id}' , 'DeleteSlider')->name('delete.slider');
      });
 
+
+    // Banner  All Route
+    Route::controller(BannerController::class)->group(function(){
+        Route::get('/all/banner' , 'AllBanner')->name('all.banner');
+        Route::get('/add/banner' , 'AddBanner')->name('add.banner');
+        Route::post('/store/banner' , 'StoreBanner')->name('store.banner');
+        Route::get('/edit/banner/{id}' , 'EditBanner')->name('edit.banner');
+       Route::post('/update/banner' , 'UpdateBanner')->name('update.banner');
+       Route::get('/delete/banner/{id}' , 'DeleteBanner')->name('delete.banner');
+     });
 
 
 
