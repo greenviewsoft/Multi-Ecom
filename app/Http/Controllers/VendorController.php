@@ -131,8 +131,7 @@ class VendorController extends Controller
 
         return redirect()->route('vendor.login')->with($notification);
 
-    }// End Mehtod
-
+    }// End Method
 
 
 
