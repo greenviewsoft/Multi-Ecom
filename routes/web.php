@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 /**\
@@ -198,4 +199,6 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('ven
 
    }); // Admin End Middleware
 
+//////// Frontend Product details All Route ////////
 
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);

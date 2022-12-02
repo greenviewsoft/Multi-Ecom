@@ -1,5 +1,5 @@
 @php
-$products = App\Models\Product::where('status',1)->orderBy('id','ASC')->limit(8)->get();
+$products = App\Models\Product::where('status',1)->orderBy('id','ASC')->limit(10)->get();
 $categories = App\Models\Category::orderBy('category_name','ASC')->get();
 @endphp
 <section class="product-tabs section-padding position-relative">
@@ -30,7 +30,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                         <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="shop-product-right.html">
+                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                                         <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
 
                                     </a>
@@ -62,7 +62,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                 <div class="product-category">
                                     <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
                                 </div>
-                                <h2><a href="shop-product-right.html"> {{ $product->product_name }} </a></h2>
+                                <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
                                 <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
@@ -71,7 +71,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                 </div>
                                 <div>
                                 @if($product->vendor_id == NULL)
-                                <span class="font-small text-muted">By <a href="vendor-details-1.html">Qwner</a></span>
+                                <span class="font-small text-muted">By <a href="vendor-details-1.html">Admin</a></span>
 
 
                                 @else
@@ -121,7 +121,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
     <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
         <div class="product-img-action-wrap">
             <div class="product-img product-img-zoom">
-                <a href="shop-product-right.html">
+                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                     <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
 
                 </a>
@@ -153,7 +153,7 @@ $discount = ($amount/$product->selling_price) * 100;
             <div class="product-category">
                 <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
             </div>
-            <h2><a href="shop-product-right.html"> {{ $product->product_name }} </a></h2>
+            <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
             <div class="product-rate-cover">
                 <div class="product-rate d-inline-block">
                     <div class="product-rating" style="width: 90%"></div>
