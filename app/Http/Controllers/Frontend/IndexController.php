@@ -12,6 +12,16 @@ use App\Models\User;
 
 class IndexController extends Controller
 {
+
+public function Index()
+{
+    $skip_category_category_0 = Category::skip(3)->first();
+    $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_category_0->id)->orderBy('id','DESC')->limit(5)->get();
+
+    return view('frontend.index',compact('skip_category_category_0','skip_product_0'));
+}
+
+
     public function ProductDetails($id,$slug)
     {
 

@@ -108,6 +108,9 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                 <!--End product-grid-4-->
             </div>
             <!--En tab one-->
+
+
+            
 @foreach($categories  as $category)
             <div class="tab-pane fade" id="category{{ $category->id  }}" role="tabpanel" aria-labelledby="tab-two">
                 <div class="row product-grid-4">
@@ -162,7 +165,7 @@ $discount = ($amount/$product->selling_price) * 100;
             </div>
             <div>
             @if($product->vendor_id == NULL)
-            <span class="font-small text-muted">By <a href="vendor-details-1.html">Qwner</a></span>
+            <span class="font-small text-muted">By <a href="vendor-details-1.html">Admin</a></span>
 
 
             @else
