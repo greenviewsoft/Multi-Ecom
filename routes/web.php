@@ -205,3 +205,4 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('ven
 //////// Frontend Product details All Route ////////
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+Route::get('/vendor/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
