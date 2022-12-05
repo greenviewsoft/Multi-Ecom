@@ -4,8 +4,8 @@
 
 <div class="container">
     <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
-                <h3 class="">All Our Vendor List </h3>
-                <a class="show-all" href="shop-grid-right.html">
+                <h3 class="">All Our Vendor List  </h3>
+                <a class="show-all" href="{{ route('all.vendor') }}">
                     All Vendors
                     <i class="fi-rs-angle-right"></i>
                 </a>
@@ -20,7 +20,8 @@
                         <div class="vendor-img-action-wrap">
                             <div class="vendor-img">
                                 <a href="{{ route('vendor.details',$vendor->id) }}">
-                                    <img class="default-img" src="{{ (!empty($product->vendor->photo)) ? url('upload/vendor_images/'.$product->vendor->photo):url('upload/no_image.jpg') }}" alt="" />
+                                    <img class="default-img" src="{{ (!empty($vendor->photo)) ? url('upload/vendor_images/'.$vendor->photo):url('upload/no_image.jpg') }}" style="width:120px;height: 120px;" alt="" />
+
                                 </a>
                             </div>
                             <div class="product-badges product-badges-position product-badges-mrg">
