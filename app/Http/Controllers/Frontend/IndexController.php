@@ -91,8 +91,10 @@ public function CatWiseProducts(Request $request, $id,$slug)
       $categories = Category::orderBy('category_name', 'ASC')->get();
       $breadcat = Category::where('id',$id)->first();
 
+      $newProduct = Product::OrderBy('id','DESC')->limit(3)->get();
 
-    return view('frontend.product.category_view',compact('product','categories','breadcat'));
+
+    return view('frontend.product.category_view',compact('product','categories','breadcat','newProduct'));
 }// End Method
 
 
