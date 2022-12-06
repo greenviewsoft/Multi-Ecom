@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\SubCategory;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -78,9 +79,20 @@ public function VendorAll()
 
   $vendors = User::where('status','active')->where('role','vendor')->orderBy('id','DESC')->get();
 
-  
+
   return view('frontend.vendor.vendor_all',compact('vendors'));
 
 }// End Method
+
+
+public function CatWiseProducts(Request $request, $id,$slug)
+{
+    $product = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
+    $categories = Category::orderBy('category_name', 'ASC')->get();
+
+    return view('frontend.product.category_view',compact('product','categories'));
+}// End Method
+
+
 
 }
