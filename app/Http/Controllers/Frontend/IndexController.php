@@ -87,10 +87,12 @@ public function VendorAll()
 
 public function CatWiseProducts(Request $request, $id,$slug)
 {
-    $product = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
-    $categories = Category::orderBy('category_name', 'ASC')->get();
+      $product = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
+      $categories = Category::orderBy('category_name', 'ASC')->get();
+      $breadcat = Category::where('id',$id)->first();
 
-    return view('frontend.product.category_view',compact('product','categories'));
+
+    return view('frontend.product.category_view',compact('product','categories','breadcat'));
 }// End Method
 
 
