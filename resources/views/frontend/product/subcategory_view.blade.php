@@ -8,7 +8,10 @@
                     <h3 class="mb-15">{{ $breadsubcat->subcategory_name }}</h3>
                     <div class="breadcrumb">
                         <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                        <span></span> {{ $breadsubcat->subcategory_name }}
+                        <span></span>
+                        {{ $breadsubcat->category->category_name }} <span></span>
+                        {{ $breadsubcat->subcategory_name }}
+
                     </div>
                 </div>
 
