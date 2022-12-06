@@ -99,4 +99,17 @@ public function CatWiseProducts(Request $request, $id,$slug)
 
 
 
+public function SubCatWiseProducts(Request $request, $id,$slug)
+{
+      $product = Product::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->get();
+      $categories = Category::orderBy('category_name', 'ASC')->get();
+      $breadsubcat = SubCategory::where('id',$id)->first();
+
+      $newProduct = Product::OrderBy('id','DESC')->limit(3)->get();
+
+
+    return view('frontend.product.subcategory_view',compact('product','categories','breadsubcat','newProduct'));
+}// End Method
+
+
 }

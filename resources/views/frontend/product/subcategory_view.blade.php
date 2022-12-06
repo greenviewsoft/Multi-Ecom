@@ -1,21 +1,14 @@
 @extends('frontend.master_dashboard')
 @section('main')
-
-
-
-
-
-
-
 <div class="page-header mt-30 mb-50">
     <div class="container">
         <div class="archive-header">
             <div class="row align-items-center">
                 <div class="col-xl-3">
-                    <h3 class="mb-15">{{ $breadcat->category_name }}</h3>
+                    <h3 class="mb-15">{{ $breadsubcat->subcategory_name }}</h3>
                     <div class="breadcrumb">
                         <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                        <span></span> {{ $breadcat->category_name }}
+                        <span></span> {{ $breadsubcat->subcategory_name }}
                     </div>
                 </div>
 
@@ -75,7 +68,7 @@
 
 
 
-                @foreach(  $product as $product)
+                @foreach($product as $product)
 
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
@@ -111,7 +104,7 @@
                         </div>
                         <div class="product-content-wrap">
                             <div class="product-category">
-                                <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
+                                <a href="shop-grid-right.html">{{$product['subcategory']['subcategory_name'] }}</a>
                             </div>
                             <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
                             <div class="product-rate-cover">
