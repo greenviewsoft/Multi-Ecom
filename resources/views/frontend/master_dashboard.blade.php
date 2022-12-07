@@ -129,6 +129,58 @@ if(data.product.discount_price == null ){
 
 
 
+/// start  stock options
+
+if(data.product.product_qty > 0){
+    $('#aviable').text('');
+    $('#stockout').text('');
+    $('#aviable').text('aviable');
+}else {
+
+    $('#aviable').text('');
+    $('#stockout').text('');
+    $('#stockout').text('stockout');
+}
+/// end  stock options
+
+
+/// start   size options
+$('select[name="size"]').empty();
+$.each(data.size,function(key,value){
+
+    $('select[name="size"]').append('<option value="'+value+' ">'+value+' </option ')
+        if(data.size == ""){
+  $('#sizeArea').hide();
+
+        }else{
+
+            $('#sizeArea').show();
+        } //end else
+}) // end size
+
+
+
+
+/// start   color options
+$('select[name="color"]').empty();
+$.each(data.color,function(key,value){
+
+    $('select[name="color"]').append('<option value="'+value+' ">'+value+' </option ')
+        if(data.color == ""){
+  $('#colorAreya').hide();
+
+        }else{
+
+            $('#colorAreya').show();
+        } //end else
+}) // end color
+
+
+
+
+/// end  stock options
+
+
             }
         })
 
