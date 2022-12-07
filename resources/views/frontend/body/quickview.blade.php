@@ -6,7 +6,8 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
                         <div class="detail-gallery">
-                            <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+
+
                             <!-- MAIN SLIDES -->
                             <img class="default-img" src="" id="pimage" />
                         </div>
@@ -23,7 +24,6 @@
                             <select class="form-control unicase-foarm-control" id="size" name="size">
 
 
-
                             </select>
                         </div>
 
@@ -31,16 +31,15 @@
                         <div class="attr-detail attr-size mb-30" id="colorAreya">
                             <strong class="mr-10" style="width:50px;">Color: </strong>
                             <select class="form-control unicase-foarm-control" id="color" name="color">
-                                <option selected="" disabled="">--Choose Size</option>
                             </select>
                         </div>
 
                             <div class="clearfix product-price-cover">
                                 <div class="product-price primary-color float-left">
-                                    <span class="current-price text-brand" id="pprice">$</span>
+                                    <span class="current-price text-brand" id="pprice"></span>
                                     <span>
 
-                                        <span class="old-price font-md ml-15" id="oldprice">$</span>
+                                        <span class="old-price font-md ml-15" id="oldprice"></span>
                                     </span>
                                 </div>
                             </div>
@@ -48,10 +47,11 @@
                                 <div class="detail-qty border radius">
                                     <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                                     <input type="text" name="qty" id="qty" class="qty-val" value="1" min="1">
+
                                     <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                 </div>
                                 <div class="product-extra-link2">
-                                    <button type="submit" class="button button-add-to-cart" onclick="AddToCart()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                    <button type="submit" class="button button-add-to-cart" onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to cart </button>
                                 </div>
                             </div>
 
@@ -62,7 +62,8 @@
                                     <div class="font-xs">
                                 <ul>
                                     <li class="mb-5">Brand: <span class="text-brand" id="pbrand"></span></li>
-                                    <li class="mb-5">Category:<span class="text-brand" id="pcategory> Jun 4.2022</span></li>
+                                    <li class="mb-5">Category:<span class="text-brand" id="pcategory"> </span></li>
+
                                 </ul>
                             </div>
 
@@ -73,7 +74,7 @@
 
                                     <div class="font-xs">
                                 <ul>
-                                    <li class="mb-5">Product Code : <span class="text-brand" id="pcode></span></li>
+                                    <li class="mb-5">Product Code : <span class="text-brand" id="pcode"> </span></li>
                                     <li class="mb-5">Stock:<span class="badge badge-pill badge-success" id="aviable" style="backgound:green; color: white;"> </span>
                                         <span class="badge badge-pill badge-danger" id="stockout" style="backgound:red; color: white;"> </span></li>
                                 </ul>

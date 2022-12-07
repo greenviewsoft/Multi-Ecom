@@ -38,7 +38,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                 <div class="product-action-1">
                                     <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
                                     <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
                                 </div>
 
                     @php
@@ -82,17 +82,18 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                 </div>
                                 <div class="product-card-bottom">
 
-                                    @if( $product->discount_price == NULL )
-                                    <div class="product-price">
-                                        <span>${{  $product->selling_price }}</span>
 
-                                    </div>
-                                    @else
-                                    <div class="product-price">
-                                        <span>${{  $product->discount_price }}</span>
-                                        <span class="old-price">${{  $product->selling_price }}</span>
-                                    </div>
-                                    @endif
+                    @if( $product->discount_price == NULL )
+                    <div class="product-price">
+                        <span>${{  $product->selling_price }}</span>
+
+                    </div>
+                    @else
+                    <div class="product-price">
+                        <span>${{  $product->discount_price }}</span>
+                        <span class="old-price">${{  $product->selling_price }}</span>
+                    </div>
+                    @endif
 
                                     <div class="add-cart">
                                         <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
