@@ -51,6 +51,7 @@
                                     <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                 </div>
                                 <div class="product-extra-link2">
+                                    <inputc class="hidden" id="product_Id">
                                     <button type="submit" class="button button-add-to-cart" onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to cart </button>
                                 </div>
                             </div>
