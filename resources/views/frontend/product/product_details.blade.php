@@ -108,6 +108,7 @@
 
                         @if ($product->product_color == null)
                         @else
+                        
                             <div class="attr-detail attr-size mb-30">
                                 <strong class="mr-10" style="width:50px;">Color : </strong>
                                 <select class="form-control unicase-foarm-control" id="size">

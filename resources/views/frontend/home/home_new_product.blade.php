@@ -110,7 +110,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
             <!--En tab one-->
 
 
-            
+
 @foreach($categories  as $category)
             <div class="tab-pane fade" id="category{{ $category->id  }}" role="tabpanel" aria-labelledby="tab-two">
                 <div class="row product-grid-4">
