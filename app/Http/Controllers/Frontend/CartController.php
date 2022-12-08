@@ -7,6 +7,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
+use PhpParser\Node\Stmt\Return_;
+
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id){
@@ -53,12 +55,25 @@ class CartController extends Controller
 
             }
 
-
-
-
-
     }// End Method
 
 
+
+
+
+
+    public function AddMiniCart(){
+
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+            $carts = Cart::content();
+            return response()->json(array(
+            'carts' => $carts,
+            'cartQty' => $cartQty,
+            'cartTotal' => $cartTotal
+
+        ));
+    }// End Method
 
 }

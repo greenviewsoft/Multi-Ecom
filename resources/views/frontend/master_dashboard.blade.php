@@ -203,7 +203,7 @@ function addToCart(){
         url: "/cart/data/store/"+id,
         success:function(data){
              $('#closeModal').click();
-            // console.log(data)
+            console.log(data)
 
 
 
@@ -217,16 +217,16 @@ function addToCart(){
         timer: 3000
     })
 
-if ($.isEmptyObject(data.error)) {
-    Toast.fire({
-    type: 'success',
-    title: data.success,
+    if ($.isEmptyObject(data.error)) {
+        Toast.fire({
+            type: 'success',
+           title: data.success,
 })
 
 }else{
     Toast.fire({
-    type: 'error',
-    title: data.error,
+        type: 'error',
+        title: data.error,
 })
 }
  /// end message
@@ -240,6 +240,28 @@ if ($.isEmptyObject(data.error)) {
 
      </script>
 
+
+
+////// Start Mini Cart ///////
+
+<script type="text/javascript">
+
+
+function miniCart(){
+    $.ajax({
+        type: 'GET',
+        url: '/product/mini/cart',
+        dataType: 'json',
+        success:function(response){
+             console.log(response)
+        }
+    })
+ }
+
+
+</script>
+
+////// End Mini Cart ///////
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

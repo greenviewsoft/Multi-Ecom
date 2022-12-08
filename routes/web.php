@@ -203,6 +203,11 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('ven
 
    }); // Admin End Middleware
 
+
+/////// Product mini Cart /////////////
+
+Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
+
 //////// Frontend Product details All Route ////////
 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
@@ -222,4 +227,6 @@ Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax
 
 /////// Add to cart  Ajax /////////////
 return Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+
+
 
