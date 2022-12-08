@@ -89,7 +89,7 @@
 
         $.ajaxSetup({
             headers:{
-                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('centent')
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
             }
         })
 
@@ -112,6 +112,7 @@ $('#pbrand').text(data.product.brand.brand_name);
 $('#pimage').attr('src','/'+data.product.product_thambnail );
 $('#product_Id').val(id);
 $('#qty').val(1);
+
 
 // product price
 if(data.product.discount_price == null ){
@@ -177,8 +178,6 @@ $.each(data.color,function(key,value){
 }) // end color
 
 
-
-
 /// end  stock options
 
 
@@ -190,29 +189,27 @@ $.each(data.color,function(key,value){
 //// Start Add to Cart product
 
 function addToCart(){
-
-    var product_name = $('#pname').text();
-    var id = $('#product_id').val();
-    var color = $('#color option:selected').text();
-    var size = $('#size option:selected').text();
-    var quantity = $('#qty').val();
-    $.ajax({
-
-        type: 'POST',
-        dataType: 'json',
+     var product_name = $('#pname').text();
+     var id = $('#product_Id').val();
+     var color = $('#color option:selected').text();
+     var size = $('#size option:selected').text();
+     var quantity = $('#qty').val();
+     $.ajax({
+        type: "POST",
+        dataType : 'json',
         data:{
-
-            color:color,size:size,quantity:quantity,product_name:product_name
+            color:color, size:size, quantity:quantity,product_name:product_name
         },
-        url: "/cart/data/store"+id,
+        url: "/cart/data/store/"+id,
         success:function(data){
-        console.log(data)
-            // alert(data)
-    })
-
-}
+             $('#closeModal').click();
+            console.log(data)
+        }
+     })
+    }
 
 //// end Add to Cart product
+
 
      </script>
 
