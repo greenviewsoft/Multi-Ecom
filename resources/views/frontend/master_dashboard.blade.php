@@ -384,7 +384,7 @@ function miniCartRemove(rowId){
 
 function addToWishList(product_id){
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: '/product/wishlist/add/'+product_id,
         dataType:'json',
         success:function(data){
@@ -392,7 +392,7 @@ function addToWishList(product_id){
              const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',
-                  icon: 'success',
+
                   showConfirmButton: false,
                   timer: 3000
             })
@@ -400,12 +400,14 @@ function addToWishList(product_id){
 
                     Toast.fire({
                     type: 'success',
+                    icon: 'success',
                     title: data.success,
                     })
             }else{
 
            Toast.fire({
                     type: 'error',
+                    icon: 'error',
                     title: data.error,
                     })
                 }

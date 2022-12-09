@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\wishlistController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 /**\
@@ -234,5 +235,10 @@ Route::get('/minicart/product/remove/{rowId}', [CartController::class, 'RemoveMi
 
 /////// Add to cart To For Products details  Ajax /////////////
 Route::post('/dcart/data/store/{id}', [CartController::class, 'AddToCartDetails']);
+
+/////// Add to Wise List /////////////
+Route::post('/product/wishlist/add/{product_id}', [wishlistController::class, 'AddToWishList']);
+
+
 
 
