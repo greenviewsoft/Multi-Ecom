@@ -244,6 +244,8 @@ Route::middleware(['auth','role:user'])->group(function(){
     // Whish list Route
     Route::controller(wishlistController::class)->group(function(){
         Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
+        Route::get('/get-wishlist-product' , 'GetWishlistProduct');
+        Route::get('/wishlist-remove/{id}' , 'WishlistRemove');
      }); // Whish list Route end
 });
 
