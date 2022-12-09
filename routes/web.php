@@ -239,6 +239,12 @@ Route::post('/dcart/data/store/{id}', [CartController::class, 'AddToCartDetails'
 /////// Add to Wise List /////////////
 Route::post('/product/wishlist/add/{product_id}', [wishlistController::class, 'AddToWishList']);
 
+Route::middleware(['auth','role:user'])->group(function(){
 
+    // Whish list Route
+    Route::controller(wishlistController::class)->group(function(){
+        Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
+     }); // Whish list Route end
+});
 
 
