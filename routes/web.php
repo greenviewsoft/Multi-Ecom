@@ -226,7 +226,11 @@ Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax
 
 
 /////// Add to cart  Ajax /////////////
-return Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+ Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+
+/////// Add to cart  Remove /////////////
+Route::get('/minicart/product/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
 
 
 
