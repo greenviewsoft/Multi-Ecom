@@ -374,15 +374,61 @@ function miniCartRemove(rowId){
      })
    }
     /// Mini Cart Remove End
+
 </script>
+
+
+/// Wise List Start
+
+<script type="text/javascript">
+
+function addToWishList(product_id){
+    $.ajax({
+        type: 'GET',
+        url: '/product/wishlist/add/'+product_id,
+        dataType:'json',
+        success:function(data){
+             // Start Message
+             const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 3000
+            })
+            if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                    type: 'success',
+                    title: data.success,
+                    })
+            }else{
+
+           Toast.fire({
+                    type: 'error',
+                    title: data.error,
+                    })
+                }
+              // End Message
+        }
+        })
+    }
+
+</script>
+
+/// Wise List End
+
+
+
+
 
 //// End Mini Cart ///////
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></scrip>
 
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></scrip>
 
 <script>
  @if(Session::has('message'))
