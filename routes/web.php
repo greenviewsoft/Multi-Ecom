@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\wishlistController;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Controllers\User\CompareController;
 
 /**\
 
@@ -238,6 +239,10 @@ Route::post('/dcart/data/store/{id}', [CartController::class, 'AddToCartDetails'
 
 /////// Add to Wise List /////////////
 Route::post('/product/wishlist/add/{product_id}', [wishlistController::class, 'AddToWishList']);
+
+/// Add to Compare
+Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
+
 
 Route::middleware(['auth','role:user'])->group(function(){
 
