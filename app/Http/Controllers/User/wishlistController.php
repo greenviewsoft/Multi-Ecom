@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Compare;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Wishlist;
@@ -53,4 +54,9 @@ class wishlistController extends Controller
     Wishlist::where('user_id',Auth::id())->where('id',$id)->delete();
  return response()->json(['success' => 'Successfully Product Remove' ]);
 }// End Method
+
+
+
+
+
 }
