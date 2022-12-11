@@ -5,10 +5,10 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
 <section class="product-tabs section-padding position-relative">
     <div class="container">
         <div class="section-title style-2 wow animate__animated animate__fadeIn">
-            <h3> New Products </h3>
+            <h4> New Products  </h4>
             <ul class="nav nav-tabs links" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">All</button>
+                    <button class="nav-link active mr-5  " id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true" >All</button>
                 </li>
 
         @foreach($categories as $cat)
@@ -36,12 +36,9 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                     </a>
                                 </div>
                                 <div class="product-action-1">
-
-                                    <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)" ><i class="fi-rs-heart"></i></a>
-
-
-                                    <a aria-label="Compare" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
-                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
+                                    <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
+                                    <a aria-label="Compare" class="action-btn" id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
+                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"  id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                 </div>
 
                     @php
@@ -78,7 +75,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
 
 
                                 @else
-                                <span class="font-small text-muted">By <a href="vendor-details-1.html">{{$product['vendor']['name']  }}</a></span>
+                                <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product->vendor_id) }}">{{$product['vendor']['name']  }}</a></span>
                                 @endif
 
 
@@ -134,8 +131,8 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                 </a>
             </div>
             <div class="product-action-1">
-                <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)" ><i class="fi-rs-heart"></i></a>
+                <a aria-label="Compare" class="action-btn" id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
                 <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
 
 

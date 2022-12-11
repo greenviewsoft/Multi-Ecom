@@ -113,7 +113,7 @@
                 <div class="header-action-icon-2">
                     <a href="{{ route('wishlist') }}">
                         <img class="svgInject" alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
-                        <span class="pro-count blue"  id="wishQty"> </span>
+                        <span class="pro-count blue"  id="wishQty">0</span>
                     </a>
                     <a href="{{ route('wishlist') }}"><span class="lable">Wishlist</span></a>
                 </div>
@@ -124,7 +124,7 @@
                                     <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue" id="cartQty" ></span>
                                 </a>
-                                <a href="shop-cart.html"><span class="lable">Cart</span></a>
+                                <a href="{{ route('mycart') }}"><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
 
                                  <!--- start mini cart  with ajax--->
@@ -215,7 +215,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                    <a href="/"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">

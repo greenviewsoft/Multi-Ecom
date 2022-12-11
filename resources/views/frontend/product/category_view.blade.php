@@ -87,8 +87,8 @@
                                 </a>
                             </div>
                             <div class="product-action-1">
-                                <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
+                                <a aria-label="Compare" class="action-btn" id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
                                 <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"  id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                             </div>
 
@@ -122,11 +122,11 @@
                             </div>
                             <div>
                             @if($product->vendor_id == NULL)
-                            <span class="font-small text-muted">By <a href="vendor-details-1.html">Admin</a></span>
+                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$product->id) }}">Admin</a></span>
 
 
                             @else
-                            <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $product['vendor']['name'] }}</a></span>
+                            <span class="font-small text-muted"> By <a href="{{ route('vendor.details',$product->id) }}">{{ $product['vendor']['name'] }}</a></span>
                             @endif
 
 
@@ -146,7 +146,7 @@
                                 @endif
 
                                 <div class="add-cart">
-                                    <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                    <a class="add" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Details </a>
                                 </div>
                             </div>
                         </div>
