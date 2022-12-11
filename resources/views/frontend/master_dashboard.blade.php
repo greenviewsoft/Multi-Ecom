@@ -609,7 +609,7 @@ function wishlistRemove(id){
                             </td>
 
                             <td class="action text-center" data-title="Remove">
-                                <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)"  ><i class="fi-rs-trash"></i></a>
+                                <a type="submit" class="text-body" id="${value.id}" onclick="RemoveCompare(this.id)"  ><i class="fi-rs-trash"></i></a>
                             </td>
                         </tr> `
            });
@@ -619,8 +619,47 @@ function wishlistRemove(id){
                 })
             }
     compare();
-</script>
+
 <!--  /// End  Load Compare Data -->
+
+// Wishlist Remove Start
+function RemoveCompare(id){
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/compare-remove/"+id,
+                success:function(data){
+                    compare();
+                     // Start Message
+            const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+
+                  showConfirmButton: false,
+                  timer: 3000
+            })
+            if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                    type: 'success',
+                    icon: 'success',
+                    title: data.success,
+                    })
+            }else{
+
+           Toast.fire({
+                    type: 'error',
+                    icon: 'error',
+                    title: data.error,
+                    })
+                }
+              // End Message
+                }
+            })
+        }
+ // Wishlist Remove End
+</script>
+
 
 //// End Mini Cart ///////
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>

@@ -251,7 +251,7 @@ Route::middleware(['auth','role:user'])->group(function(){
         Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
         Route::get('/get-wishlist-product' , 'GetWishlistProduct');
         Route::get('/wishlist-remove/{id}' , 'WishlistRemove');
-        Route::get('/wishlist-remove/{id}' , 'WishlistRemove');
+
 
     });
 
@@ -260,6 +260,7 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::controller(CompareController::class)->group(function(){
         Route::get('/compare' , 'AllCompare')->name('compare');
         Route::get('/get-compare-product' , 'GetCompareProduct');
+        Route::get('/compare-remove/{id}' , 'RemoveCompare');
     });
 });
 
