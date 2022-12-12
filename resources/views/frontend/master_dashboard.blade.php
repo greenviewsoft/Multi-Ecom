@@ -377,6 +377,8 @@ function miniCartRemove(rowId){
 
 </script>
 
+
+
 <!--  // Start Load MY Cart // -->
 <script type="text/javascript">
     function cart(){
@@ -387,6 +389,7 @@ function miniCartRemove(rowId){
        success:function(response){
            // console.log(response)
            cart();
+           miniCart();
        var rows = ""
        $.each(response.carts, function(key,value){
           rows += `<tr class="pt-30">
@@ -426,7 +429,8 @@ function miniCartRemove(rowId){
            <td class="price" data-title="Price">
                <h4 class="text-brand">$${value.subtotal} </h4>
            </td>
-           <td class="action text-center" data-title="Remove"><a href="#" class="text-body"><i class="fi-rs-trash"></i></a></td>
+           <td class="action text-center" data-title="Remove">
+            <a type="submit" class="text-body"  id="${value.rowId}" onclick="RemoveCart(this.id)"><i class="fi-rs-trash"></i></a></td>
        </tr>`
          });
            $('#cartPage').html(rows);
@@ -434,10 +438,46 @@ function miniCartRemove(rowId){
    })
 }
  cart();
+
+// End Load MY Cart
+
+
+// Cart Remove Start
+function RemoveCart(id){
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/cart-remove/"+id,
+                success:function(data){
+                    cart();
+
+                     // Start Message
+            const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 3000
+            })
+            if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                    type: 'success',
+                    title: data.success,
+                    })
+            }else{
+
+           Toast.fire({
+                    type: 'error',
+                    title: data.error,
+                    })
+                }
+              // End Message
+                }
+            })
+        }
+// Cart Remove End
 </script>
-<!--  // End Load MY Cart // -->
-
-
 
 // Wishlist Start
 
