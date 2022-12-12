@@ -267,6 +267,8 @@ Route::middleware(['auth','role:user'])->group(function(){
         Route::get('/mycart' , 'MyCart')->name('mycart');
         Route::get('/get-cart-product' , 'GetCartProduct');
         Route::get('/cart-remove/{rowId}' , 'CartRemove');
+        Route::get('/cart-decrement/{rowId}' , 'CartDecrement');
+
     });
 }); //end group User Middleware
 
