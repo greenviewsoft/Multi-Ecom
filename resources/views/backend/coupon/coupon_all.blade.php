@@ -16,7 +16,7 @@
 					</div>
 					<div class="ms-auto">
 						<div class="btn-group">
-		<a href="{{ route('add.subcategory') }}" class="btn btn-primary">Add Coupon</a>
+		<a href="{{ route('add.coupon') }}" class="btn btn-primary">Add Coupon</a>
 						</div>
 					</div>
 				</div>
@@ -41,13 +41,13 @@
 	@foreach($coupons as $key => $item)
 			<tr>
 				<td> {{ $key+1 }} </td>
-				<td> {{ $item->coupon_Name }}</td>
-				<td> {{ $item->coupon_discount }}  </td>
-				<td> {{ Carbon/Carbon::parse($item->coupon_validity)->format('D, d F Y') }}  </td>
-				<td> {{ $item->status }}  </td>
+				<td> {{ $item->coupon_name }}</td>
+				<td> {{ $item->coupon_discount }}% </td>
+				<td> {{ Carbon\Carbon::parse($item->coupon_validity)->format('D, d F Y') }}  </td>
+
 
                 <td>
-                    @if($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'));
+                    @if($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
 <span class="badge rounded-pill bg-success">Valid</span>
 @else
 <span class="badge rounded-pill bg-danger">Invalid</span>
@@ -55,8 +55,8 @@
                 </td>
 
 				<td>
-<a href="{{ route('edit.subcategory',$item->id) }}" class="btn btn-info">Edit</a>
-<a href="{{ route('delete.subcategory',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
+<a href="{{ route('edit.coupon',$item->id) }}" class="btn btn-info">Edit</a>
+<a href="{{ route('delete.coupon',$item->id) }}" class="btn btn-danger" id="delete" >Delete</a>
 
 				</td>
 			</tr>
