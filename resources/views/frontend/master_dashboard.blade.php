@@ -813,8 +813,12 @@ function applyCoupon(id){
                 data:{coupon_name:coupon_name},
                 url: "/cupon-apply/",
                 success:function(data){
-                    
-                    
+                    if (data.validity == true) {
+
+                $('#couponField').hide();
+
+                    }
+
                      // Start Message
             const Toast = Swal.mixin({
                   toast: true,

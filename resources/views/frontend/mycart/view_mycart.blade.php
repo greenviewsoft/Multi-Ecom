@@ -45,9 +45,13 @@
 
 
                     <div class="row mt-50">
+                       <div class="col-lg-5">
+                        @if(Session::has('coupon'))
 
-        <div class="col-lg-5">
-        <div class="p-40">
+                        @else
+
+
+        <div class="p-40" id="couponField">
             <h4 class="mb-10">Apply Coupon</h4>
             <p class="mb-30"><span class="font-lg text-muted">Using A Promo Code?</p>
             <form action="#">
@@ -59,6 +63,8 @@
                 </div>
             </form>
         </div>
+
+  @endif
     </div>
 
 
