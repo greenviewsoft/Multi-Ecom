@@ -805,7 +805,7 @@ function RemoveCompare(id){
 
 <script type="text/javascript"> 
 
-function applyCoupon(id){
+function applyCoupon(){
      var coupon_name = $('#coupon_name').val();
             $.ajax({
                 type: "POST",
@@ -831,12 +831,14 @@ function applyCoupon(id){
 
                     Toast.fire({
                     type: 'success',
+                     icon: 'success',
                     title: data.success,
                     })
             }else{
 
            Toast.fire({
                     type: 'error',
+                    icon: 'error',
                     title: data.error,
                     })
                 }
