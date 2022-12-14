@@ -211,5 +211,48 @@ return redirect()->route('all.State')->with($notification);
 
 
 
+public function EditState($id)
+{
+ $division = ShipDivision::orderBy('division_name','ASC')->get();
+ $shipDistrict =  ShipDistricts::orderBy('district_name','ASC')->get();
+ $state = ShipState::findOrFail($id);
+  return view('backend.ship.state.state_edit',compact('division','shipDistrict','state'));
+
+} // End Meethod
+
+
+
+public function UpdateState(Request $request)
+{
+   
+$state_id = $request->id;
+
+ShipState::findOrFail($state_id)->update([
+
+'division_id' => $request->division_id,
+'district_id' => $request->district_id,
+'state_name' => $request->state_name,
+'updated_at' => Carbon::now(),
+
+]);
+
+  $notification = array(
+            'message' => 'State Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.State')->with($notification); 
+
+
+} // End Method
+
+
+
+public function DeleteState($id)
+{
+   ShipState::findOrFail($id)->delete();
+   return redirect()->back();
+            }// End Method
+
 
 }

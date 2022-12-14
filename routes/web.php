@@ -166,10 +166,10 @@ Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/all/state' , 'AllState')->name('all.State');
     Route::get('/add/state' , 'AddState')->name('add.state');
     Route::post('/store/state' , 'StoreState')->name('store.state');
-    Route::get('/edit/district/{id}' , 'EditDistrict')->name('edit.district');
-    Route::post('/update/district' , 'UpdateDistrict')->name('update.district');
+    Route::get('/edit/state/{id}' , 'EditState')->name('edit.state');
+    Route::post('/update/state' , 'UpdateState')->name('update.state');
 
-    Route::get('/delete/district/{id}' , 'DeleteDistrict')->name('delete.district');
+    Route::get('/delete/state/{id}' , 'DeleteState')->name('delete.state');
 
     Route::get('/district/ajax/{division_id}' , 'GetDistrict');
 
