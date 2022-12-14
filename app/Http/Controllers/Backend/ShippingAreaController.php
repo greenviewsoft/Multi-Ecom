@@ -164,4 +164,29 @@ public function DeleteDistrict($id)
 
 
 
+public function AllState()
+{
+   
+ $state = ShipState::latest()->get();
+        return view('backend.ship.state.state_all',compact('state'));
+    } // End Method 
+
+
+
+public function AddState()
+{
+   $division = ShipDivision::orderBy('division_name','ASC')->get();
+ $shipDistrict =  ShipDistricts::orderBy('district_name','ASC')->get();
+ return view('backend.ship.state.state_add',compact('division','shipDistrict'));
+
+} // End Method 
+
+public function GetDistrict($division_id)
+{
+     $dis = ShipDistricts::where('division_id',$division_id)->orderBy('district_name','ASC')->get();
+            return json_encode($dis);
+} // End Method
+
+
+
 }
