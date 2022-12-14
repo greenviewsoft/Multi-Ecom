@@ -847,6 +847,24 @@ function applyCoupon(){
             })
         }
 
+   // Start Copun Calcalation Method
+
+function applyCoupon() {
+
+$.ajax({
+    type: 'GET',
+    url: '/coupon_calculation',
+    dataType: 'json',
+    success:function(data){
+
+    }
+})
+
+
+}
+
+   
+   // End Copun Calcalation Method
 
 </script>
 

@@ -189,8 +189,8 @@ if ($coupons ) {
    Session::put('coupon',[
     'coupon_name' => $coupons->coupon_name,
     'coupon_discount' => $coupons->coupon_discount,
-    'coupon_discount' => round(Cart::total() * $coupons->coupon_discount/100),
-    'cart_total_amount' => round(Cart::total() - Cart::total() * $coupons->coupon_discount/100),
+    'discount_amount' =>  => round(Cart::total() * $coupons->coupon_discount/100),
+    'total_amount' => round(Cart::total() - Cart::total() * $coupons->coupon_discount/100),
 
 
    ]);
@@ -207,5 +207,30 @@ if ($coupons ) {
 }
 
     } //End Method
+
+    public function CouponCalculation()
+    {
+        if (Session::has('coupon')) {
+            return response()->json(array(
+                'subtotal' => Cart::total(),
+                'coupon_name' => Session()->get('coupon')['coupon_name']
+                'coupon_discount' => Session()->get('coupon')['coupon_discount']
+                'discount_amount' => Session()->get('coupon')['discount_amount']
+                'total_amount' => Session()->get('coupon')['total_amount']
+
+            ));
+        }else{
+
+
+            return response()->json(array(
+                'total' => Cart::total(),
+
+            ));
+        }
+
+
+
+
+    }// End Method
 
 }
