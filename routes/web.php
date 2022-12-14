@@ -296,8 +296,17 @@ Route::post('/dcart/data/store/{id}', [CartController::class, 'AddToCartDetails'
 /////// Add to Wise List /////////////
 Route::post('/product/wishlist/add/{product_id}', [wishlistController::class, 'AddToWishList']);
 
+
+
 /// Add to Compare
 Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
+
+
+/// Front End Apply Coupon
+Route::post('/cupon-apply/', [CartController::class, 'ApplyCoupon']);
+
+
+
 
 
 Route::middleware(['auth','role:user'])->group(function(){

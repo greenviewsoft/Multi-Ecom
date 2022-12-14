@@ -799,6 +799,55 @@ function RemoveCompare(id){
 
 
  {{-- End Mini Cart  --}}
+
+
+<!-- applyCoupon Start-->
+
+<script type="text/javascript"> 
+
+function applyCoupon(id){
+     var coupon_name = $('#coupon_name').val();
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                data:{coupon_name:coupon_name},
+                url: "/cupon-apply/",
+                success:function(data){
+                    
+                    
+                     // Start Message
+            const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 3000
+            })
+            if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                    type: 'success',
+                    title: data.success,
+                    })
+            }else{
+
+           Toast.fire({
+                    type: 'error',
+                    title: data.error,
+                    })
+                }
+              // End Message
+                }
+            })
+        }
+
+
+</script>
+
+<!-- applyCoupon End-->
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></scrip>
