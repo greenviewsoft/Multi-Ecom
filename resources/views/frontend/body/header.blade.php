@@ -220,7 +220,7 @@
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
                         <a class="categories-button-active" href="#">
-                            <span class="fi-rs-apps"></span>   All Categories
+                            <span class="fi-rs-apps"></span>AllCategories
                             <i class="fi-rs-angle-down"></i>
                         </a>
                         <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
@@ -231,6 +231,7 @@
 
                                     <li>
                                         <a href="shop-grid-right.html"> <img src="{{ asset($item->category_image) }}" alt="" />{{$item->category_name  }}</a>
+
                                     </li>
                                     @endforeach
                                 </ul>
@@ -275,8 +276,8 @@
                                     <a class="active" href="{{ url('/') }}">Home  </a>
 
                                 </li>
-
-
+                                
+                                {{-- mega menu category --}}
                                 @php
                                 $categories = App\Models\Category::orderBy('category_name','ASC')->limit(6)->get();
                                 @endphp

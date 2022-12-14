@@ -19,6 +19,7 @@
                 <div class="card-2 bg-10 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                     <figure class="img-hover-scale overflow-hidden">
                         <a href="{{ url('product/category/'.$item->id.'/'.$item->category_slug) }}"><img src="{{ asset( $item->category_image) }}" alt="" /></a>
+                        
                     </figure>
                     <h6><a href="{{ url('product/category/'.$item->id.'/'.$item->category_slug) }}">{{  $item->category_name }}</a></h6>
 

@@ -16,18 +16,18 @@ class IndexController extends Controller
 
 public function Index()
 {
-    $skip_category_category_0 = Category::skip(3)->first();
+    $skip_category_category_0 = Category::skip(1)->first();
     $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_category_0->id)->orderBy('id','DESC')->limit(5)->get();
 
 
-   $skip_category_category_2 = Category::skip(5)->first();
+   $skip_category_category_2 = Category::skip(2)->first();
    $skip_product_2 = Product::where('status',1)->where('category_id',$skip_category_category_2->id)->orderBy('id','DESC')->limit(5)->get();
 
 
-   $skip_category_category_3 = Category::skip(1)->first();
+   $skip_category_category_3 = Category::skip(3)->first();
    $skip_product_3 = Product::where('status',1)->where('category_id',$skip_category_category_3->id)->orderBy('id','DESC')->limit(5)->get();
 
-   $skip_category_category_4 = Category::skip(10)->first();
+   $skip_category_category_4 = Category::skip(4)->first();
    $skip_product_4 = Product::where('status',1)->where('category_id',$skip_category_category_4->id)->orderBy('id','DESC')->limit(5)->get();
 
 

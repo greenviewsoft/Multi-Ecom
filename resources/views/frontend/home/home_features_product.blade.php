@@ -1,6 +1,6 @@
 
 @php
-$featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit(6)->get();
+$featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit(5)->get();
 @endphp
 
 <section class="section-padding pb-5">

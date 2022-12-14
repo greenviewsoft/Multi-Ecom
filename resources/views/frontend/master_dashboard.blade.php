@@ -297,7 +297,7 @@ function addToCartDetails(){
 
 
 
-////// Start Mini Cart ///////
+{{-- Start Mini Cart --}}
 
 <script type="text/javascript">
 
@@ -340,7 +340,8 @@ function miniCart(){
   miniCart();
 
 
-/// Mini Cart Remove Start
+// Mini Cart Remove Start
+
 function miniCartRemove(rowId){
      $.ajax({
         type: 'GET',
@@ -379,7 +380,7 @@ function miniCartRemove(rowId){
 
 
 
-<!--  // Start Load MY Cart // -->
+<!--Start Load MY Cart-->
 <script type="text/javascript">
     function cart(){
    $.ajax({
@@ -514,7 +515,7 @@ function cartDecrement(rowId){
 
 </script>
 
-// Wishlist Start
+{{-- Wishlist Start --}}
 
 <script type="text/javascript">
 
@@ -555,10 +556,10 @@ function addToWishList(product_id){
 
 </script>
 
-// Wishlist  End
+{{-- Wishlist  End --}}
 
 
-// Wishlist Data Load Start
+{{-- // Wishlist Data Load Start --}}
 
 <script type="text/javascript">
 
@@ -797,7 +798,7 @@ function RemoveCompare(id){
 </script>
 
 
-//// End Mini Cart ///////
+ {{-- End Mini Cart  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></scrip>
