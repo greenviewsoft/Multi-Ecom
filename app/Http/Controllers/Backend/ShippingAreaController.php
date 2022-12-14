@@ -188,5 +188,28 @@ public function GetDistrict($division_id)
 } // End Method
 
 
+public function StoreState(Request $request)
+{
+ 
+ShipState::insert([
+'division_id' => $request->division_id,
+'district_id' => $request->district_id,
+'state_name' => $request->state_name,
+'created_at' => Carbon::now(),
+
+]);
+
+$notification = array(
+'message'  => 'Ship State Inserted Successfully',
+'alert-type' => 'success'
+);
+
+return redirect()->route('all.State')->with($notification);
+  
+} //End Method
+
+
+
+
 
 }
