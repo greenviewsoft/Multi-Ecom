@@ -307,7 +307,7 @@ Route::post('/cupon-apply/', [CartController::class, 'ApplyCoupon']);
 
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 
-
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
 
 
@@ -335,8 +335,8 @@ Route::middleware(['auth','role:user'])->group(function(){
         Route::get('/get-cart-product' , 'GetCartProduct');
         Route::get('/cart-remove/{rowId}' , 'CartRemove');
         Route::get('/cart-decrement/{rowId}' , 'CartDecrement');
+        
         Route::get('/cart-increment/{rowId}' , 'CartIncrement');
-
     });
 }); //end group User Middleware
 
