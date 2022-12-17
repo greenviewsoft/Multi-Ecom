@@ -18,6 +18,7 @@ use App\Http\Controllers\User\wishlistController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 
