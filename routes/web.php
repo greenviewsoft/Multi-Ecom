@@ -352,6 +352,14 @@ Route::middleware(['auth','role:user'])->group(function(){
 
     });
 
+     // Stripe All Route 
+Route::controller(StripeController::class)->group(function(){
+    Route::post('/stripe/order' , 'StripeOrder')->name('stripe.order');
+
+
+
+}); 
+
 }); //end group User Middleware
 
 
