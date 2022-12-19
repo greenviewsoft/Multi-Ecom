@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
+Use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 use Auth;
 
 class StripeController extends Controller
@@ -78,7 +80,10 @@ $data = [
 'amount' => $total_amount,
 'name' => $invoice->name,
 'email' => $invoice->email,
-]
+];
+
+
+Mail::to($request->email)->send(new OrderMail($data));
 
 // End Send Mail 
 
@@ -160,10 +165,28 @@ $data = [
 
         ]);
 
+ // Start Send Email
+
+      
+        $invoice = Order::findOrFail($order_id);
+
+        $data = [
+
+            'invoice_no' => $invoice->invoice_no,
+            'amount' => $total_amount,
+            'name' => $invoice->name,
+            'email' => $invoice->email,
+
+        ];
+
+        // End Send Email 
+
+
+
              Cart::destroy();
 
   $notification = array(
-    'message' => 'Post created successfully!',
+    'message' => 'Cash On Delivery Order  successfully!',
     'alert-type' => 'success'
 );
 
