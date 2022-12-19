@@ -68,6 +68,20 @@ $order_id = Order::insertGetId([
 
 
 
+// Start Send Mail 
+
+$invoice = Order::findOrFail($order_id);
+
+$data = [
+
+'invoice_no' => $invoice->invoice_no,
+'amount' => $total_amount,
+'name' => $invoice->name,
+'email' => $invoice->email,
+]
+
+// End Send Mail 
+
 
 
 
