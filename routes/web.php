@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\VendorProductController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\OrderController;
@@ -102,7 +103,19 @@ Route::controller(VendorProductController::class)->group(function(){
 
 });
 
-}); // end Groups Middleware
+
+
+// Brand All Route
+   Route::controller(VendorOrderController::class)->group(function(){
+       Route::get('/vendor/order' , 'VendorOrder')->name('vendor.order');
+      
+    });
+
+
+}); // End Vendor  Groups Middleware
+
+
+
 
 ////////// login Routes /////////
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class);

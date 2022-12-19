@@ -182,6 +182,27 @@ Mail::to($request->email)->send(new OrderMail($data));
         // End Send Email 
 
 
+        $carts = Cart::content();
+        foreach($carts as $cart){
+
+            OrderItem::insert([
+                'order_id' => $order_id,
+                'product_id' => $cart->id,
+                'vendor_id' => $cart->options->vendor,
+                'color' => $cart->options->color,
+                'size' => $cart->options->size,
+                'qty' => $cart->qty,
+                'price' => $cart->price,
+                'created_at' =>Carbon::now(),
+
+            ]);
+
+        } // End Foreach
+
+        if (Session::has('coupon')) {
+           Session::forget('coupon');
+        }
+
 
              Cart::destroy();
 
