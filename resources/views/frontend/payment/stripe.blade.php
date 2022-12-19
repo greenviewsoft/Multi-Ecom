@@ -143,7 +143,7 @@
   <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
   <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
   <input type="hidden" name="address" value="{{ $data['shipping_address'] }}">
-  <input type="hidden" name="notes" value="{{ $data['notes'] }}">>
+  <input type="hidden" name="notes" value="{{ $data['notes'] }}">
 
 
 

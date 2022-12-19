@@ -39,7 +39,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 //     return view('frontend.index');
 // });
 
-Route::get('/', [IndexController::class, 'Index']);
+Route::get('/', [IndexController::class, 'Index'])->name('home');
 
 Route::middleware(['auth'])->group(function() {
 
@@ -356,6 +356,7 @@ Route::middleware(['auth','role:user'])->group(function(){
      // Stripe All Route 
 Route::controller(StripeController::class)->group(function(){
     Route::post('/stripe/order' , 'StripeOrder')->name('stripe.order');
+    Route::post('/cash/order' , 'CashOrder')->name('cash.order');
 
 
 

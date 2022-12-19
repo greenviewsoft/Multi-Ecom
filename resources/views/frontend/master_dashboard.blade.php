@@ -215,7 +215,7 @@ $.each(data.color,function(key,value){
 function addToCart(){
      var product_name = $('#pname').text();
      var id = $('#product_Id').val();
-     var vendor_id = $('#pvendor_id').text();
+     var vendor = $('#pvendor_id').text();
      var color = $('#color option:selected').text();
      var size = $('#size option:selected').text();
      var quantity = $('#qty').val();
@@ -223,7 +223,7 @@ function addToCart(){
         type: "POST",
         dataType : 'json',
         data:{
-            color:color, size:size, quantity:quantity,product_name:product_name,vendor_id:vendor_id
+            color:color, size:size, quantity:quantity,product_name:product_name,vendor:vendor
         },
         url: "/cart/data/store/"+id,
         success:function(data){
@@ -272,13 +272,13 @@ function addToCartDetails(){
      var id = $('#dproduct_Id').val();
      var color = $('#dcolor option:selected').text();
      var size = $('#dsize option:selected').text(); 
-     var vendor_id = $('#vproduct_id').val();
+     var vendor = $('#vproduct_id').val();
      var quantity = $('#dqty').val();
      $.ajax({
         type: "POST",
         dataType : 'json',
         data:{
-            color:color, size:size, quantity:quantity,product_name:product_name,vendor_id:vendor_id
+            color:color, size:size, quantity:quantity,product_name:product_name,vendor:vendor
         },
         url: "/dcart/data/store/"+id,
         success:function(data){
