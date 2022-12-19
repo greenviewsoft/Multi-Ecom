@@ -140,7 +140,7 @@
 					</ul>
 				</li>
 
-                <li class="menu-label">UI Elements</li>
+                <li class="menu-label">Vendors</li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -154,6 +154,23 @@
                         </li>
                     </ul>
                 </li>
+
+
+ <li class="menu-label">Order </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-cart'></i>
+                        </div>
+                        <div class="menu-title">Order Mange</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('pending.order') }}"><i class="bx bx-right-arrow-alt"></i>All Order</a>
+                        </li>
+                        <li> <a href="{{ route('active.vendor') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendor</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
