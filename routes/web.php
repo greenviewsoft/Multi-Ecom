@@ -392,6 +392,8 @@ Route::controller(StripeController::class)->group(function(){
     // User  All Route 
 Route::controller(AllUserController::class)->group(function(){
     Route::get('/user/account/page' , 'UserAccountPage')->name('user.account.page');
+    Route::get('/user/change/password' , 'UserChangePassword')->name('user.change.password');
+    Route::get('/user/order/page' , 'UserOrderPage')->name('user.order.page');
    
 
 

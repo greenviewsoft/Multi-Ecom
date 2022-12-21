@@ -19,4 +19,18 @@ public function UserAccountPage()
 } // End Method
 
 
+
+public function UserChangePassword()
+{
+   
+   return view('frontend.userdashboard.user_change_password');
+} //End Method
+
+
+
+public function UserOrderPage()
+{
+      return view('frontend.userdashboard.user_order_page');
+}
+
 }
