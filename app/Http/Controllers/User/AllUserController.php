@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Auth;
 
 class AllUserController extends Controller
@@ -43,7 +44,10 @@ public function UserOrderDetails($order_id)
    $order = Order::with('division','district','state','user')->where('id',$order_id)->where('user_id',Auth::user()->id)->first();
    $orderitem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','desc')->get();
 
-   return view('frontend.order.order_details',compact('order','orderitem'))
+   return view('frontend.order.order_details',compact('order','orderitem'));
 }// End Method
+
+
+
 
 }
