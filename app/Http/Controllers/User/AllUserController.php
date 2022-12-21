@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Order;
 use Auth;
 
 class AllUserController extends Controller
@@ -30,7 +31,9 @@ public function UserChangePassword()
 
 public function UserOrderPage()
 {
-      return view('frontend.userdashboard.user_order_page');
+    $id = Auth::user()->id;
+    $orders = Order::where('user_id',$id)->orderBy('id','desc')->get();
+      return view('frontend.userdashboard.user_order_page',compact('orders'));
 }
 
 }
