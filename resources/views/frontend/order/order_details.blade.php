@@ -203,7 +203,7 @@
             </td>
             @if($item->vendor_id == NULL)
              <td class="col-md-2">
-                <label>Owner </label>
+                <label>Admin </label>
             </td>
             @else
                 <td class="col-md-2">

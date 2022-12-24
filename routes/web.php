@@ -396,7 +396,7 @@ Route::controller(AllUserController::class)->group(function(){
     Route::get('/user/order/page' , 'UserOrderPage')->name('user.order.page');
 
     Route::get('/user/orders_details/{order_id}' , 'UserOrderDetails');
-   
+     Route::get('/user/invoice_download/{order_id}' , 'UserOrderInvoice');  
 
 
 
