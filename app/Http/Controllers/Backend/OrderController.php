@@ -38,7 +38,7 @@ public function AdminOrderDetails($order_id){
 
 public function AdminConfirmOrder(){
 
-$order = Order::where('status','confirmed')->OrderBy('id', 'desc')->get();
+$order = Order::where('status','confirm')->OrderBy('id', 'desc')->get();
 return view('backend.orders.confirmed_orders',compact('order'));
 
 } // end method
@@ -59,6 +59,49 @@ $order = Order::where('status','delivered') ->OrderBy('id', 'desc')->get();
 return view('backend.orders.deliverd_orders',compact('order'));
 
 } // end method
+
+
+public function PendingToConfirmOrder($order_id){
+ Order::findOrFail($order_id)->update(['status' => 'confirm']);
+
+        $notification = array(
+            'message' => 'Order Confirm Successfully',
+            'alert-type' => 'success'
+        );
+    return redirect()->route('admin.confirm.order')->with($notification);
+
+
+} // End method
+
+
+
+
+
+public function ConfirmToProcessing($order_id){
+ Order::findOrFail($order_id)->update(['status' => 'processing']);
+
+        $notification = array(
+            'message' => 'Order Processing Successfully',
+            'alert-type' => 'success'
+        );
+    return redirect()->route('admin.processing.order')->with($notification);
+
+
+} // End method
+
+
+public function ProcessingToDelivery($order_id){
+ Order::findOrFail($order_id)->update(['status' => 'delivered']);
+
+        $notification = array(
+            'message' => 'Order Delivered Successfully',
+            'alert-type' => 'success'
+        );
+    return redirect()->route('admin.deliverd.order')->with($notification);
+
+
+} // End method
+
 
 
 

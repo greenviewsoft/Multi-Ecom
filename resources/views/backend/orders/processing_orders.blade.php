@@ -48,7 +48,7 @@
      <td>{{ $item->invoice_no ?? 'not-exist' }}</td>
      <td>{{ $item->amount }}</td>
       <td>{{ $item->payment_method }}</td>
-      <td> <span class="badge rounded-pill bg-success"> {{ $item->status }}</span></td> 
+      <td> <span class="badge rounded-pill bg-info"> {{ $item->status }}</span></td> 
     
 
     <td>
