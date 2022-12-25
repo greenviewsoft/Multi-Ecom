@@ -138,13 +138,13 @@
  <th>
 
 @if($order->status == 'pending')
-  <a href="{{ route('pending-confram',$order->id) }}" class="btn btn-primary" id="confirm">Confirm Order </a> 
+  <a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-primary" id="confirm">Confirm Order </a> 
 
 @elseif($order->status == 'confirm')
  <a href="{{ route('confirm-processing',$order->id) }}" class="btn btn-primary" id="processing">Processing Order </a> 
 
  @elseif($order->status == 'processing')
- <a href="{{ route('processing-delivery',$order->id) }}" class="btn btn-primary" id="delivery">Delivered Order </a> 
+ <a href="{{ route('processing-delivered',$order->id) }}" class="btn btn-primary" id="delivery">Delivered Order </a> 
 
 @endif
    
@@ -203,7 +203,7 @@
         </tr>
 
 
-        @foreach($orderitem as $item)
+        @foreach($orderItem as $item)
          <tr>
             <td class="col-md-1">
                 <label><img src="{{ asset($item->product->product_thambnail) }}" style="width:55px; height:70px;" > </label>

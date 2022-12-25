@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
 use Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -28,9 +29,8 @@ return view('backend.orders.pending_orders',compact('order'));
 
 public function AdminOrderDetails($order_id){
 	$order = Order::with('division','district','state','user')->where('id',$order_id)->first();
-   $orderitem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','desc')->get();
-
-   return view('backend.orders.admin_order_details',compact('order','orderitem'));
+    $orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+   return view('backend.orders.admin_order_details',compact('order','orderItem'));
 }// End Method
 
 
@@ -101,6 +101,19 @@ public function ProcessingToDelivery($order_id){
 
 
 } // End method
+
+
+
+    public function AdminInvoiceDownload($order_id){
+        $order = Order::with('division','district','state','user')->where('id',$order_id)->first();
+        $orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+
+        $pdf = Pdf::loadView('backend.orders.admin_order_invoice', compact('order','orderItem'))->setPaper('a4')->setOption([
+                'tempDir' => public_path(),
+                'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+    }
 
 
 
