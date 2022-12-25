@@ -1,37 +1,36 @@
-@extends('dashboard') 
-@section('user')
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@extends('admin.admin_dashboard')
+@section('admin')
 
 
 
+<div class="page-content">
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Admin Order Detaiils</div>
+        <div class="ps-3">
 
-  <div class="page-header breadcrumb-wrap">
-            <div class="container">
-                <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> My Account
-                </div>
-            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Admin Order Detaiils</li>
+                </ol>
+            </nav>
         </div>
-        <div class="page-content pt-50 pb-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 m-auto">
-<div class="row">
-
-<!-- // Start Col md 3 menu -->
-
- @include('frontend.body.dashboard_sidebar_menu')
-<!-- // End Col md 3 menu -->
+       
+    </div>
+    <!--end breadcrumb-->
 
 
 
-<!-- // Start Col md 9  -->
-<div class="col-md-9">
-    <div class="row">
 
-        <div class="col-md-6">
-            <div class="card">
+    <hr/>
+
+
+
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
+                    <div class="col">
+                        <div class="card">
                <div class="card-header"><h4>Shipping Details</h4> </div> 
                <hr>
                <div class="card-body">
@@ -87,12 +86,9 @@
                </div>
 
             </div>
-        </div>
-<!-- // End col-md-6  --> 
-
-
-        <div class="col-md-6">
-            <div class="card">
+                    </div>
+                    <div class="col">
+                        <div class="card">
                <div class="card-header"><h4>Order Details
 <span class="text-danger">Invoice : {{ $order->invoice_no }} </span></h4>
                 </div> 
@@ -132,35 +128,34 @@
 
                      <tr>
                         <th>Order Status:</th>
-      <th><span class="badge rounded-pill bg-warning">{{ $order->status }}</span></th>
+      <th><span class="badge rounded-pill bg-info">{{ $order->status }}</span></th>
                     </tr>
+
+<tr>
+
+<th></th>
+
+ <th><a href="" class="btn btn-primary">Confirm Order </a> </th>
+
+  </tr>
+
 
                 </table>
 
                </div>
 
             </div>
-        </div>
-<!-- // End col-md-6  --> 
-
-    </div><!-- // End Row  --> 
-
-
-
-
-   </div> 
-<!-- // End Col md 9  -->
-
-                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-    <div class="container">
-        <div class="row"> 
-            <div class="col-lg-12">
-                <div class="table-responsive">
+
+
+
+
+                <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-1">
+                    <div class="col">
+                        <div class="card">
+                            <div class="table-responsive">
 <table class="table" style="font-weight: 600;"  >
     <tbody>
         <tr>
@@ -248,27 +243,17 @@
 </table>
 
             </div>
+                        </div>
+                    </div>
 
-
-{{-- start retarun order option --}}
-
-@if($order->status !== 'deliverd')
-
-@else 
-
- <div class="form-group" style=" font-weight: 600; font-size: initial; color: #000000;
-">
-                    <label>Order Return Reason</label>
-                    <textarea name="return_reason" class="form-control"></textarea>
+                    
                 </div>
-    <button type="submit" class="btn-sm btn-danger">Order Return</button>
-@endif
-
- {{-- end retarun order option --}}
 
 
-        </div>
-    </div>
+
+</div>
+
+
 
 
 @endsection

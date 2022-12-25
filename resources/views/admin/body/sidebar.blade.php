@@ -164,10 +164,16 @@
                         <div class="menu-title">Order Mange</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('pending.order') }}"><i class="bx bx-right-arrow-alt"></i>All Order</a>
+                        <li> <a href="{{ route('pending.order') }}"><i class="bx bx-right-arrow-alt"></i>Pending  Order</a>
                         </li>
-                        <li> <a href="{{ route('active.vendor') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendor</a>
+                        <li> <a href="{{ route('admin.confirm.order') }}"><i class="bx bx-right-arrow-alt"></i>Confirm Order </a>
                         </li>
+                         <li> <a href="{{ route('admin.processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing Order </a>
+                        </li>
+                         <li> <a href="{{ route('admin.deliverd.order') }}"><i class="bx bx-right-arrow-alt"></i>Delivered Order </a>
+                        </li>
+
+
                     </ul>
                 </li>
 
