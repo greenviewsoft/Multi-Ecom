@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\wishlistController;
@@ -211,6 +212,15 @@ Route::controller(OrderController::class)->group(function(){
     Route::get('/confirm/processing/{order_id}' , 'ConfirmToProcessing')->name('confirm-processing');
     Route::get('/processing/delivery/{order_id}' , 'ProcessingToDelivery')->name('processing-delivered');
     Route::get('/admin/invoice/download/{order_id}' , 'AdminInvoiceDownload')->name('admin.invoice.download');
+
+});
+
+
+// Return Admin All Route
+
+Route::controller(ReturnController::class)->group(function(){
+    Route::get('/return/request', 'ReturnRequest')->name('return.request');
+
 
 });
 
