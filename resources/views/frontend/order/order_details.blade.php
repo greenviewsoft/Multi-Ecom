@@ -1,4 +1,4 @@
-@extends('dashboard') 
+@extends('dashboard')
 @section('user')
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -32,7 +32,7 @@
 
         <div class="col-md-6">
             <div class="card">
-               <div class="card-header"><h4>Shipping Details</h4> </div> 
+               <div class="card-header"><h4>Shipping Details</h4> </div>
                <hr>
                <div class="card-body">
                  <table class="table" style="background:#F4F6FA;font-weight: 600;">
@@ -88,14 +88,14 @@
 
             </div>
         </div>
-<!-- // End col-md-6  --> 
+<!-- // End col-md-6  -->
 
 
         <div class="col-md-6">
             <div class="card">
                <div class="card-header"><h4>Order Details
 <span class="text-danger">Invoice : {{ $order->invoice_no }} </span></h4>
-                </div> 
+                </div>
                <hr>
                <div class="card-body">
                 <table class="table" style="background:#F4F6FA;font-weight: 600;">
@@ -141,14 +141,14 @@
 
             </div>
         </div>
-<!-- // End col-md-6  --> 
+<!-- // End col-md-6  -->
 
-    </div><!-- // End Row  --> 
-
-
+    </div><!-- // End Row  -->
 
 
-   </div> 
+
+
+   </div>
 <!-- // End Col md 9  -->
 
                         </div>
@@ -158,7 +158,7 @@
         </div>
 
     <div class="container">
-        <div class="row"> 
+        <div class="row">
             <div class="col-lg-12">
                 <div class="table-responsive">
 <table class="table" style="font-weight: 600;"  >
@@ -188,7 +188,7 @@
 
             <td class="col-md-3">
                 <label>Price  </label>
-            </td> 
+            </td>
 
         </tr>
 
@@ -239,7 +239,7 @@
 
             <td class="col-md-3">
                 <label>${{ $item->price }} <br> Total = ${{ $item->price * $item->qty }}   </label>
-            </td> 
+            </td>
 
         </tr>
         @endforeach
@@ -249,19 +249,34 @@
 
             </div>
 
-
 {{-- start retarun order option --}}
 
-@if($order->status !== 'deliverd')
+@if($order->status !== 'delivered')
 
-@else 
+@else
 
- <div class="form-group" style=" font-weight: 600; font-size: initial; color: #000000;
-">
+
+
+@php
+    $order =  App\Models\Order::where('id',$order->id)->where('return_reason', '=',NULL)->first();
+@endphp
+
+
+@if($order)
+<form action="{{ route('return.order',$order->id) }}" method="post">
+    @csrf
+  <div class="form-group" style=" font-weight: 600; font-size: initial; color: #000000; ">
                     <label>Order Return Reason</label>
-                    <textarea name="return_reason" class="form-control"></textarea>
+                      <textarea name="return_reason" class="form-control"  style="width:40%;"></textarea>
                 </div>
-    <button type="submit" class="btn-sm btn-danger">Order Return</button>
+     <button type="submit" class="btn-sm btn-danger" style="width:40%;">Order Return</button>
+
+</form>
+@else
+<h5><span class=" " style="color:red;">You have send return request for this product</span></h5><br><br>
+
+@endif
+
 @endif
 
  {{-- end retarun order option --}}

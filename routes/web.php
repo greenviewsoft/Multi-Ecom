@@ -109,7 +109,7 @@ Route::controller(VendorProductController::class)->group(function(){
 // Brand All Route
    Route::controller(VendorOrderController::class)->group(function(){
        Route::get('/vendor/order' , 'VendorOrder')->name('vendor.order');
-      
+
     });
 
 
@@ -152,7 +152,7 @@ Route::controller(CouponController::class)->group(function(){
 
 });
 
- // Shipping Division All Route 
+ // Shipping Division All Route
 Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/all/division' , 'AllDivision')->name('all.division');
     Route::get('/add/division' , 'AddDivision')->name('add.division');
@@ -161,11 +161,11 @@ Route::controller(ShippingAreaController::class)->group(function(){
     Route::post('/update/division' , 'UpdateDivision')->name('update.division');
     Route::get('/delete/division/{id}' , 'DeleteDivision')->name('delete.division');
 
-}); 
+});
 
 
 
- // Shipping Distic All Route 
+ // Shipping Distic All Route
 Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/all/district' , 'AllDistrict')->name('all.district');
     Route::get('/add/district' , 'AddDistrict')->name('add.district');
@@ -174,11 +174,11 @@ Route::controller(ShippingAreaController::class)->group(function(){
     Route::post('/update/district' , 'UpdateDistrict')->name('update.district');
     Route::get('/delete/district/{id}' , 'DeleteDistrict')->name('delete.district');
 
-}); 
+});
 
 
 
- // Shipping State  All Route 
+ // Shipping State  All Route
 Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/all/state' , 'AllState')->name('all.State');
     Route::get('/add/state' , 'AddState')->name('add.state');
@@ -192,12 +192,12 @@ Route::controller(ShippingAreaController::class)->group(function(){
 
 
 
-}); 
+});
 
 
 
 
- // Admin Order   All Route 
+ // Admin Order   All Route
 Route::controller(OrderController::class)->group(function(){
     Route::get('/pending/order' , 'PendingOrder')->name('pending.order');
     Route::get('/admin/order/details/{order_id}' , 'AdminOrderDetails')->name('admin.order.details');
@@ -205,14 +205,14 @@ Route::controller(OrderController::class)->group(function(){
     Route::get('/admin/confirm/order/' , 'AdminConfirmOrder')->name('admin.confirm.order');
     Route::get('/admin/processing/order/' , 'AdminProcessingOrder')->name('admin.processing.order');
     Route::get('/admin/deliverd/order/' , 'AdminDeliverdOrder')->name('admin.deliverd.order');
-    
+
 
     Route::get('/pending/confirm/{order_id}' , 'PendingToConfirmOrder')->name('pending-confirm');
     Route::get('/confirm/processing/{order_id}' , 'ConfirmToProcessing')->name('confirm-processing');
     Route::get('/processing/delivery/{order_id}' , 'ProcessingToDelivery')->name('processing-delivered');
     Route::get('/admin/invoice/download/{order_id}' , 'AdminInvoiceDownload')->name('admin.invoice.download');
 
-}); 
+});
 
 
 
@@ -345,10 +345,10 @@ Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
-// Checkout Page Route 
+// Checkout Page Route
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
 
- // Cart All Route 
+ // Cart All Route
 Route::controller(CartController::class)->group(function(){
     Route::get('/mycart' , 'MyCart')->name('mycart');
     Route::get('/get-cart-product' , 'GetCartProduct');
@@ -387,28 +387,34 @@ Route::middleware(['auth','role:user'])->group(function(){
 
     });
 
-     // Stripe All Route 
+     // Stripe All Route
 Route::controller(StripeController::class)->group(function(){
     Route::post('/stripe/order' , 'StripeOrder')->name('stripe.order');
     Route::post('/cash/order' , 'CashOrder')->name('cash.order');
 
 
-}); 
+});
 
 
 
-    // User  All Route 
+    // User Dashboards  All Route
 Route::controller(AllUserController::class)->group(function(){
     Route::get('/user/account/page' , 'UserAccountPage')->name('user.account.page');
     Route::get('/user/change/password' , 'UserChangePassword')->name('user.change.password');
     Route::get('/user/order/page' , 'UserOrderPage')->name('user.order.page');
 
     Route::get('/user/orders_details/{order_id}' , 'UserOrderDetails');
-     Route::get('/user/invoice_download/{order_id}' , 'UserOrderInvoice');  
+    Route::get('/user/invoice_download/{order_id}' , 'UserOrderInvoice');
+
+
+    Route::post('/return/order/{order_id}' , 'ReturnOrder')->name('return.order');
+
+    Route::get('/return/order/Page/' , 'ReturnOrderPage')->name('return.order.page');
 
 
 
-}); 
+
+});
 
 }); //end group User Middleware
 
