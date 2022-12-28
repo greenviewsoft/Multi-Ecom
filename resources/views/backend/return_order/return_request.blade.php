@@ -60,7 +60,7 @@
       <td>{{ $item->return_reason }}</td>
     <td>
 <a href="{{ route('admin.order.details',$item->id) }}" class="btn btn-info" title="Details"><i class="fa fa-eye"> </i></a>
-<a href="{{ route('admin.order.details',$item->id) }}" class="btn btn-danger" title="Details"><i class="fa-solid fa-person-circle-check"> </i></a>
+<a href="{{ route ('return.request.approved',$item->id) }}" class="btn btn-danger" id="approved" title="Approved"><i class="fa-solid fa-person-circle-check"> </i></a>
 
 
 

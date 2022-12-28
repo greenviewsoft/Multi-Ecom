@@ -129,4 +129,39 @@ $(function(){
     });
 
   });
-//prossing Order End
+//delivery Order End
+
+
+
+// return Order Start
+
+$(function(){
+    $(document).on('click','#approved',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+
+                  Swal.fire({
+                    title: 'Are you sure to Approved?',
+                    text: "Return order Approved",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Approved!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      window.location.href = link
+                      Swal.fire(
+                        'Approved!',
+                        'Approved Changed',
+                        'success'
+                      )
+                    }
+                  })
+
+
+    });
+
+  });
+//return Order End

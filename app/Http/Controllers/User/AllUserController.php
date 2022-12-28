@@ -93,7 +93,7 @@ public function ReturnOrder(Request $request ,$order_id)
 
 public function ReturnOrderPage(){
 
-    $orders =  Order::where('user_id', FacadesAuth::user()->id)->where('return_order', '=', 1)->orderBy('id','desc')->get();
+    $orders =  Order::where('user_id', FacadesAuth::user()->id)->where('return_reason', '!=', NULL)->orderBy('id','desc')->get();
 return view('frontend.order.return_order_view',compact('orders'));
 
 } // End Method
