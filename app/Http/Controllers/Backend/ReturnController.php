@@ -32,5 +32,12 @@ return redirect()->back()->with($notification);
  } // End Method
 
 
+ public function ReturnRequestComplete()
+ {
+    $order  = Order::where('return_order', 2)->orderBy('id', 'desc')->get();
+
+    return view('backend.return_order.return_request_complete',compact('order'));
+ }
+
 
 }
