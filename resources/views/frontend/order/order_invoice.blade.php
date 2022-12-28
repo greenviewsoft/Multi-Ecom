@@ -73,11 +73,11 @@
            <strong>Name:</strong> {{ $order->name }} <br>
            <strong>Email:</strong> {{ $order->email }} <br>
            <strong>Phone:</strong> {{ $order->phone }} <br>
-           
+
             @php
-            $div =  $order->division->division_name; 
+            $div =  $order->division->division_name;
             $dis =  $order->district->district_name;
-            $state = $order->state->state_name; 
+            $state = $order->state->state_name;
             @endphp
             <strong>Address:</strong> {{ $order->adress }} / {{$div}} / {{ $dis }}/ {{ $state }}<br>
            <strong>Post Code:</strong> {{ $order->post_code }}
@@ -87,7 +87,7 @@
           <p class="font">
             <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no }}</h3>
             Order Date: {{ $order->order_date }} <br>
-             Delivery Date: {{ $order->delivered_date }} <br>
+             {{-- Delivery Date: {{ $order->delivered_date }} <br> --}}
             Payment Type : {{$order->payment_method}} </span>
          </p>
         </td>
@@ -119,7 +119,7 @@
             <img src="{{ public_path($item->product->product_thambnail) }} " height="50px;" width="50px;" alt="">
         </td>
        <td align="center">{{ $item->product->product_name }}</td>
-            
+
         @if($item->size == NULL)
               <td align="center"> ...
         </td>
@@ -149,7 +149,7 @@
 
         <td align="center">${{ $item->price }}</td>
       </tr>
-@endforeach 
+@endforeach
     </tbody>
   </table>
   <br>

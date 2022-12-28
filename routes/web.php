@@ -111,6 +111,8 @@ Route::controller(VendorProductController::class)->group(function(){
    Route::controller(VendorOrderController::class)->group(function(){
        Route::get('/vendor/order' , 'VendorOrder')->name('vendor.order');
 
+       Route::get('/vendor/order/return' , 'VendorOrderReturn')->name('vendor.return.order');
+
     });
 
 
