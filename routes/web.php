@@ -239,6 +239,8 @@ Route::controller(ReturnController::class)->group(function(){
 Route::controller(ReportController::class)->group(function(){
     Route::get('/report/view', 'ReportView')->name('report.view');
     Route::post('/searchby/date', 'SearchByDate')->name('search-by-date');
+    Route::post('/searchby/month', 'SearchByMonth')->name('search-by-month');
+    Route::post('/searchby/year', 'SearchByYear')->name('search-by-year');
     
 
 });

@@ -19,7 +19,7 @@
        
     </div>
     <!--end breadcrumb-->
-   
+
 
     <hr/>
     
@@ -42,14 +42,15 @@
 
         </form>
 
-        <form>
+        <form method="post" action="{{ route('search-by-month') }}">
+            @csrf
             <div class="col">
                 <div class="card">
          
                     <div class="card-body">
                         <h5 class="card-title">Search By Month</h5>
                         <label class="form-label">Select Month:</label>
-                            <select class="form-select mb-3" aria-label="Default select example">
+                            <select name="month" class="form-select mb-3" aria-label="Default select example">
                                     <option selected="">Open this select Month</option>
                                     <option value="Janurary">Janurary</option>
                                     <option value="February">February</option>
@@ -82,7 +83,8 @@
             </div>
         </form>
 
-                    <form>
+                  <form method="post" action="{{ route('search-by-year') }}">
+            @csrf
         <div class="col">
             <div class="card">
 
