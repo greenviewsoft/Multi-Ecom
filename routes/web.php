@@ -112,8 +112,9 @@ Route::controller(VendorProductController::class)->group(function(){
        Route::get('/vendor/order' , 'VendorOrder')->name('vendor.order');
 
        Route::get('/vendor/order/return' , 'VendorOrderReturn')->name('vendor.return.order');
-       
+
        Route::get('/vendor/complate/order/return' , 'VendorComplateOrderReturn')->name('vendor.complate.return.order');
+       Route::get('/vendor/order/details/{order_id}' , 'VendorOrderDetails')->name('vendor.orders.details');
 
     });
 
