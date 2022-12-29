@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\wishlistController;
@@ -241,7 +242,20 @@ Route::controller(ReportController::class)->group(function(){
     Route::post('/searchby/date', 'SearchByDate')->name('search-by-date');
     Route::post('/searchby/month', 'SearchByMonth')->name('search-by-month');
     Route::post('/searchby/year', 'SearchByYear')->name('search-by-year');
-    
+
+   Route::get('/order/by/user/report', 'OrderByUserReport')->name('user.report.view');
+   Route::post('/search/by/user/report', 'SearchByUser')->name('search-by-user');
+
+
+});
+
+
+//  Admin Report  All Route
+
+Route::controller(ActiveUserController::class)->group(function(){
+    Route::get('/all/user', 'AllUser')->name('all-user');
+   
+
 
 });
 

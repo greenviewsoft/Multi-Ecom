@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
 use DateTime;
 
 
@@ -51,5 +52,24 @@ public function SearchByYear(Request $request)
 
 
 } // End Method
+
+
+
+public function OrderByUserReport()
+{
+
+    $users = User::where('role','user')->latest()->get();
+  return view('backend.report.report_by_user',compact('users'));
+    } // End Method
+
+
+
+public function SearchByUser(Request $request)
+{
+    
+ $user = $request->user;
+$orders = Order::where('user_id',$user)->latest()->get();
+ return view('backend.report.report_by_user_show',compact('orders','user'));
+}// End Method
 
 }
