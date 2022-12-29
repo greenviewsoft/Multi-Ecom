@@ -254,6 +254,7 @@ Route::controller(ReportController::class)->group(function(){
 
 Route::controller(ActiveUserController::class)->group(function(){
     Route::get('/all/user', 'AllUser')->name('all-user');
+    Route::get('/all/vendor', 'AllVendor')->name('all-vendor');
    
 
 

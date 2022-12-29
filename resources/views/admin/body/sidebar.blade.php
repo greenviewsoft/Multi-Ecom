@@ -223,7 +223,7 @@
                     <ul>
                         <li> <a href="{{ route('all-user') }} "><i class="bx bx-right-arrow-alt"></i>All User</a>
                         </li>
-                      <li> <a href="{{ route('user.report.view') }} "><i class="bx bx-right-arrow-alt"></i>All Vendor</a>
+                      <li> <a href="{{ route('all-vendor') }} "><i class="bx bx-right-arrow-alt"></i>All Vendor</a>
                         </li>
                     </ul>
                 </li>
