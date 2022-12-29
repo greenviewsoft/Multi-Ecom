@@ -34,4 +34,13 @@ public function VendorOrder()
     } // End Method
 
 
+
+public function VendorComplateOrderReturn()
+{
+      $id = FacadesAuth::user()->id;
+        $orderitem = OrderItem::with('order')->where('vendor_id',$id)->orderBy('id','DESC')->get();
+        return view('vendor.orders.complate_return_orders',compact('orderitem'));
+    } // End Method
+
+
 }

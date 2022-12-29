@@ -54,6 +54,9 @@ $status = $verdorId->status;
                 </li>
 
 
+                <li> <a href="{{ route('vendor.complate.return.order') }}"><i class="bx bx-right-arrow-alt"></i>Complate Return Order</a>
+                </li>
+
             </ul>
         </li>
         @endif
