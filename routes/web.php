@@ -261,14 +261,25 @@ Route::controller(ActiveUserController::class)->group(function(){
 
 });
 
-Route::controller(BlogController::class)->group(function(){
+    // Blog Category All Route
+    Route::controller(BlogController::class)->group(function(){
     Route::get('/admin/blog', 'AllBlogCategory')->name('admin.blog.category');
     Route::get('/admin/blog/add', 'AddBlogCategory')->name('add.blog.category');
     Route::post('/admin/store/blog/category' , 'StoreBlogCateogry')->name('store.blog.category');
     Route::get('/admin/edit/blog/category/{id}' , 'EditBlogCateogry')->name('edit.blog.category');
-  Route::post('/admin/update/blog/category' , 'UpdateBlogCateogry')->name('update.blog.category');
-  Route::get('/admin/delete/blog/category/{id}' , 'DeleteBlogCateogry')->name('delete.blog.category');
+    Route::post('/admin/update/blog/category' , 'UpdateBlogCateogry')->name('update.blog.category');
+    Route::get('/admin/delete/blog/category/{id}' , 'DeleteBlogCateogry')->name('delete.blog.category');
 });
+
+
+ // Blog Post All Route
+    Route::controller(BlogController::class)->group(function(){
+    Route::get('/admin/blog/post', 'AllBlogPost')->name('admin.blog.post');
+    Route::get('/admin/add/blog/post', 'AddBlogPost')->name('add.blog.Post');
+    Route::post('/admin/store/blog/post', 'StoreBlogPost')->name('store.blog.post');
+    
+});
+
 
 
 

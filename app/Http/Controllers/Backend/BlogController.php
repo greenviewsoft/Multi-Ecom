@@ -73,4 +73,53 @@ class BlogController extends Controller
 
         return redirect()->back()->with($notification); 
     }// End Method 
+
+
+
+
+
+////////// Blog Post Method /////////////////////
+
+public function AllBlogPost(){
+
+ $blogpost = BlogPost::latest()->get();
+        return view('backend.blog.post.blogpost_all',compact('blogpost'));
+}// End method 
+
+
+
+public function AddBlogPost() {
+    $BlogCategory = BlogCategory::latest()->get();
+     return view('backend.blog.post.blogpost_add',compact('BlogCategory'));
+} // End Method
+
+
+public function StoreBlogPost(Request $request)
+{
+    $image = $request->file('post_image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(1103,906)->save('upload/blog/'.$name_gen);
+        $save_url = 'upload/blog/'.$name_gen;
+
+        BlogPost::insert([
+            'category_id' => $request->category_id,
+            'post_title' => $request->post_title,
+            'post_short_description' => $request->post_short_description,
+            'post_long_description' => $request->post_long_description,
+            'post_slug' => strtolower(str_replace(' ', '-',$request->post_slug)),
+            'post_image' => $save_url,
+            'created_at' => Carbon::now(),
+        ]);
+
+       $notification = array(
+            'message' => 'Blog Post Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.blog.post')->with($notification);
+
+    }// End Method
+
+
+
 }

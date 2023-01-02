@@ -239,6 +239,10 @@
                         </li>
                       <li> <a href="{{ route('add.blog.category') }} "><i class="bx bx-right-arrow-alt"></i>Add Blog Category</a>
                         </li>
+
+    <li> <a href="{{ route('admin.blog.post') }} "><i class="bx bx-right-arrow-alt"></i> Blog Post</a>
+                        </li>
+
                     </ul>
                 </li>
 
