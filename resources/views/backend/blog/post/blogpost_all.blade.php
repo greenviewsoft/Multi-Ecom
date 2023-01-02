@@ -42,7 +42,7 @@
 @foreach($blogpost as $key => $item)
 <tr>
     <td> {{ $key+1 }} </td>
-    <td>{{ $item->category_id }}</td>
+    <td>{{ $item['BlogPost']['blog_category_name'] }}</td>
     <td> <img src="{{ asset($item->post_image) }}" style="width: 70px; height:40px;" >  </td>
  <td>{{ $item->post_title }}</td>
     <td>
