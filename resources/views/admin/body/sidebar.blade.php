@@ -228,6 +228,20 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"> <i class="bx bx-user-check"></i>
+                        </div>
+                        <div class="menu-title">Blog Manage</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('admin.blog.category') }} "><i class="bx bx-right-arrow-alt"></i>All Blog Category</a>
+                        </li>
+                      <li> <a href="{{ route('add.blog.category') }} "><i class="bx bx-right-arrow-alt"></i>Add Blog Category</a>
+                        </li>
+                    </ul>
+                </li>
+
 
 
                 <li class="menu-label">Charts & Maps</li>

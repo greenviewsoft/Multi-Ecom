@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ActiveUserController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\wishlistController;
@@ -258,6 +259,15 @@ Route::controller(ActiveUserController::class)->group(function(){
    
 
 
+});
+
+Route::controller(BlogController::class)->group(function(){
+    Route::get('/admin/blog', 'AllBlogCategory')->name('admin.blog.category');
+    Route::get('/admin/blog/add', 'AddBlogCategory')->name('add.blog.category');
+    Route::post('/admin/store/blog/category' , 'StoreBlogCateogry')->name('store.blog.category');
+    Route::get('/admin/edit/blog/category/{id}' , 'EditBlogCateogry')->name('edit.blog.category');
+  Route::post('/admin/update/blog/category' , 'UpdateBlogCateogry')->name('update.blog.category');
+  Route::get('/admin/delete/blog/category/{id}' , 'DeleteBlogCateogry')->name('delete.blog.category');
 });
 
 
