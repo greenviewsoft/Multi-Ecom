@@ -221,7 +221,7 @@ public function AllBlog()
 }// End Method
 
 
-public function PostDetails($id,$slug)
+public function BlogDetails($id,$slug)
 {
   $blogcategory = BlogCategory::latest()->get();
         $blogdetails = BlogPost::findOrFail($id);
@@ -230,5 +230,16 @@ public function PostDetails($id,$slug)
 } // End method
 
 
+
+
+ public function BlogPostCategory($id,$slug){
+
+        $blogcategory = BlogCategory::latest()->get();
+        $blogpost = BlogPost::where('category_id',$id)->get();
+        $breadcat = BlogCategory::where('id',$id)->get();
+        return view('frontend.blog.category_post',compact('blogcategory','blogpost','breadcat'));
+
+    }// End Method 
+    
 }
 
