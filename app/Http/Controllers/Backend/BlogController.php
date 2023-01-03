@@ -185,6 +185,9 @@ public function EditBlogPost($id)
     }// End Method 
 
 
+
+
+
     public function DeleteBlogPost($id)
     {
 
@@ -204,4 +207,17 @@ public function EditBlogPost($id)
         return redirect()->back()->with($notification); 
     }// End Method 
 
+
+
+public function AllBlog()
+{
+       $blogcategory = BlogCategory::latest()->get();
+        $blogpost = BlogPost::latest()->get();
+        return view('frontend.blog.home_blog',compact('blogcategory','blogpost'));
+        
+}// End Method
+
+
+
 }
+

@@ -426,6 +426,15 @@ Route::controller(CartController::class)->group(function(){
     Route::get('/cart-increment/{rowId}' , 'CartIncrement');
     });
 
+
+// Frontend End Blog Post All Route
+    Route::controller(BlogController::class)->group(function(){
+    Route::get('/blog', 'AllBlog')->name('home.blog');
+  });
+
+
+
+
 Route::middleware(['auth','role:user'])->group(function(){
 
     // Whish list Route

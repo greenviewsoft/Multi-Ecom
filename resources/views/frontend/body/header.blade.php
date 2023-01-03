@@ -302,7 +302,7 @@
 
 
                                 <li>
-                                    <a href="page-contact.html">Contact</a>
+                                    <a href="{{ url('/blog') }}"> Blog  </a>
                                 </li>
                             </ul>
                         </nav>
