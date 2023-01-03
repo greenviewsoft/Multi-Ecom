@@ -209,14 +209,25 @@ public function EditBlogPost($id)
 
 
 
+
+//////// Frontend Blog Show ////////////////
+
 public function AllBlog()
 {
        $blogcategory = BlogCategory::latest()->get();
         $blogpost = BlogPost::latest()->get();
         return view('frontend.blog.home_blog',compact('blogcategory','blogpost'));
-        
+
 }// End Method
 
+
+public function PostDetails($id,$slug)
+{
+  $blogcategory = BlogCategory::latest()->get();
+        $blogdetails = BlogPost::findOrFail($id);
+        $breadcat = BlogCategory::where('id',$id)->get();
+        return view('frontend.blog.blog_details',compact('blogcategory','blogdetails','breadcat'));
+} // End method
 
 
 }
