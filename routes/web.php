@@ -277,7 +277,9 @@ Route::controller(ActiveUserController::class)->group(function(){
     Route::get('/admin/blog/post', 'AllBlogPost')->name('admin.blog.post');
     Route::get('/admin/add/blog/post', 'AddBlogPost')->name('add.blog.Post');
     Route::post('/admin/store/blog/post', 'StoreBlogPost')->name('store.blog.post');
-    
+    Route::get('/admin/edit/blog/post/{id}', 'EditBlogPost')->name('edit.blog.post');
+    Route::post('/admin/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
+    Route::get('/admin/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.category');
 });
 
 
