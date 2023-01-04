@@ -12,6 +12,7 @@
                             <li><a href="page-account.html">My Cart</a></li>
                             <li><a href="shop-wishlist.html">Checkout</a></li>
                             <li><a href="shop-order.html">Order Tracking</a></li>
+                             <li><a href="#">Call Now: 123</a></li>
                         </ul>
                     </div>
                 </div>
@@ -276,7 +277,7 @@
                                     <a class="active" href="{{ url('/') }}">Home  </a>
 
                                 </li>
-                                
+
                                 {{-- mega menu category --}}
                                 @php
                                 $categories = App\Models\Category::orderBy('category_name','ASC')->limit(6)->get();
