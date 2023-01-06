@@ -179,6 +179,11 @@
                     <!-- Detail Info -->
                 </div>
             </div>
+
+@php
+    $reviewCount = App\Models\Review::where('product_id', $product->id)->count();
+@endphp
+            
             <div class="product-info">
                 <div class="tab-style3">
                     <ul class="nav nav-tabs text-uppercase">
@@ -196,7 +201,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews
-                                (3)</a>
+                                {{ $reviewCount }}</a>
                         </li>
                     </ul>
                     <div class="tab-content shop_info_tab entry-main-content">
@@ -343,33 +348,63 @@
                                     <div class="col-lg-8">
                                         <h4 class="mb-30">Customer questions & answers</h4>
                                         <div class="comment-list">
-                                            <div class="single-comment justify-content-between d-flex mb-30">
-                                                <div class="user justify-content-between d-flex">
-                                                    <div class="thumb text-center">
-                                                        <img src="assets/imgs/blog/author-2.png" alt="" />
-                                                        <a href="#" class="font-heading text-brand">Sienna</a>
-                                                    </div>
-                                                    <div class="desc">
-                                                        <div class="d-flex justify-content-between mb-10">
-                                                            <div class="d-flex align-items-center">
-                                                                <span class="font-xs text-muted">December 4, 2022
-                                                                    at 3:12 pm </span>
-                                                            </div>
-                                                            <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width: 100%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p class="mb-10">Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit. Delectus, suscipit exercitationem
-                                                            accusantium obcaecati quos voluptate nesciunt facilis
-                                                            itaque modi commodi dignissimos sequi repudiandae minus
-                                                            ab deleniti totam officia id incidunt? <a href="#"
-                                                                class="reply">Reply</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
 
+
+
+
+
+                                            @php
+
+                                            $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
+                                            @endphp
+
+
+                                          @foreach($reviews as $review)
+
+                                          @if($review->status == 0)
+
+                                          @else 
+
+                                   
+                                          
+  <div class="single-comment justify-content-between d-flex mb-30">
+        <div class="user justify-content-between d-flex">
+            <div class="thumb text-center">
+                <img src="{{ (!empty($review->user->photo)) ? url('upload/user_images/'.$review->user->photo):url('upload/no_image.jpg') }}" alt="" />
+                <a href="#" class="font-heading text-brand">{{ $review->user->name }}</a>
+            </div>
+            <div class="desc">
+                <div class="d-flex justify-content-between mb-10">
+                    <div class="d-flex align-items-center">
+                        <span class="font-xs text-muted"> {{ Carbon\Carbon::parse($review->created_at)->diffForHumans() }} </span>
+                                                             </div>
+                    <div class="product-rate d-inline-block">
+
+
+
+@if($review->rating == NULL)
+@elseif($review->rating == 1)
+ <div class="product-rating" style="width: 20%"></div>
+@elseif($review->rating == 2)
+ <div class="product-rating" style="width: 40%"></div>
+@elseif($review->rating == 3)
+<div class="product-rating" style="width: 60%"></div>
+@elseif($review->rating == 4)
+ <div class="product-rating" style="width: 80%"></div>
+@elseif($review->rating == 5)
+ <div class="product-rating" style="width: 100%"></div>
+@endif
+                    </div>
+                </div>
+                <p class="mb-10">{{ $review->comment }} <a href="#" class="reply">Reply</a></p>
+            </div>
+        </div>
+    </div>
+
+     @endif
+
+
+    @endforeach
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
