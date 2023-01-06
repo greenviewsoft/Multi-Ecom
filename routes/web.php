@@ -26,6 +26,7 @@ use App\Http\Controllers\User\AllUserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 
@@ -433,6 +434,13 @@ Route::controller(CartController::class)->group(function(){
     Route::get('/post/details/{id}/{slug}', 'PostDetails');
     Route::get('/post/details/{id}/{slug}' , 'BlogDetails'); 
   Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');  
+  });
+
+
+// Frontend End Review All Route
+    Route::controller(ReviewController::class)->group(function(){
+    Route::get('/store/review', 'StoreReview')->name('store.review');
+  
   });
 
 
