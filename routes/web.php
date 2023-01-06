@@ -364,6 +364,18 @@ Route::controller(ActiveUserController::class)->group(function(){
 
 
 
+// Admin Reviw All Route 
+Route::controller(ReviewController::class)->group(function(){
+
+ Route::get('/pending/review' , 'PendingReview')->name('pending.review'); 
+ Route::get('/aprove/review' , 'ApproveReview')->name('aprove.review'); 
+ Route::get('/delete/review/{id}' , 'DeleteReview')->name('review.delete'); 
+ Route::get('/aprove/review/{id}' , 'AproveReview')->name('review.aprove'); 
+
+});
+
+
+
    }); // Admin End Middleware
 
 
