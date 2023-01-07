@@ -47,12 +47,17 @@
 
                 </div>
 
-@php
-   $reviewCount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
-   $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                @php
+                    $reviewCount = App\Models\Review::where('product_id', $product->id)
+                        ->where('status', 1)
+                        ->latest()
+                        ->get();
+                    $avarage = App\Models\Review::where('product_id', $product->id)
+                        ->where('status', 1)
+                        ->avg('rating');
+                @endphp
 
 
-@endphp
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="detail-info pr-30 pl-30">
                         @if ($product->product_qty > 0)
@@ -66,24 +71,23 @@
 
 
                                 <div class="product-rate d-inline-block">
-                                     @if($avarage == 0)
-
-       @elseif($avarage == 1 || $avarage < 2)                     
-    <div class="product-rating" style="width: 20%"></div>
-       @elseif($avarage == 2 || $avarage < 3)                     
-    <div class="product-rating" style="width: 40%"></div>
-       @elseif($avarage == 3 || $avarage < 4)                     
-    <div class="product-rating" style="width: 60%"></div>
-       @elseif($avarage == 4 || $avarage < 5)                     
-    <div class="product-rating" style="width: 80%"></div>
-       @elseif($avarage == 5 || $avarage < 5)                     
-    <div class="product-rating" style="width: 100%"></div>
-    @endif
+                                    @if ($avarage == 0)
+                                    @elseif($avarage == 1 || $avarage < 2)
+                                        <div class="product-rating" style="width: 20%"></div>
+                                    @elseif($avarage == 2 || $avarage < 3)
+                                        <div class="product-rating" style="width: 40%"></div>
+                                    @elseif($avarage == 3 || $avarage < 4)
+                                        <div class="product-rating" style="width: 60%"></div>
+                                    @elseif($avarage == 4 || $avarage < 5)
+                                        <div class="product-rating" style="width: 80%"></div>
+                                    @elseif($avarage == 5 || $avarage < 5)
+                                        <div class="product-rating" style="width: 100%"></div>
+                                    @endif
 
 
 
                                 </div>
-                                    <span class="font-small ml-5 text-muted"> ({{ count($reviewCount)}} reviews)</span>
+                                <span class="font-small ml-5 text-muted"> ({{ count($reviewCount) }} reviews)</span>
                             </div>
                         </div>
                         <div class="clearfix product-price-cover">
@@ -102,7 +106,8 @@
                                 <div class="product-price primary-color float-left">
                                     <span class="current-price text-brand">${{ $product->discount_price }}</span>
                                     <span>
-                                        <span class="save-price font-md color3 ml-15">{{ round($discount) }}% Off</span>
+                                        <span class="save-price font-md color3 ml-15">{{ round($discount) }}%
+                                            Off</span>
                                         <span class="old-price font-md ml-15">${{ $product->selling_price }}</span>
                                     </span>
                                 </div>
@@ -134,7 +139,6 @@
 
                         @if ($product->product_color == null)
                         @else
-
                             <div class="attr-detail attr-size mb-30">
                                 <strong class="mr-10" style="width:50px;">Color : </strong>
                                 <select class="form-control unicase-foarm-control" id="dcolor">
@@ -150,15 +154,16 @@
                         <div class="detail-extralink mb-50">
                             <div class="detail-qty border radius">
                                 <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                <input type="text" name="quantity" id="dqty" class="qty-val" value="1" min="1">
+                                <input type="text" name="quantity" id="dqty" class="qty-val" value="1"
+                                    min="1">
                                 <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                             </div>
                             <div class="product-extra-link2">
 
-<input class="hidden" id="dproduct_Id" value="{{ $product->id }}">
-<input class="hidden" id="vproduct_id" value="{{ $product->vendor_id }}">
-    <button type="submit" class="button button-add-to-cart" onclick="addToCartDetails()"><i
-            class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                <input class="hidden" id="dproduct_Id" value="{{ $product->id }}">
+                                <input class="hidden" id="vproduct_id" value="{{ $product->vendor_id }}">
+                                <button type="submit" class="button button-add-to-cart" onclick="addToCartDetails()"><i
+                                        class="fi-rs-shopping-cart"></i>Add to cart</button>
 
 
                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i
@@ -172,7 +177,8 @@
                         @if ($product->vendor_id == null)
                             <h6> Sold By <a href="#"> <span class="text-danger"> Admin </span> </a></h6>
                         @else
-                            <h6> Sold By <a href="#"> <span class="text-danger"> {{ $product['vendor']['name'] }}
+                            <h6> Sold By <a href="#"> <span class="text-danger">
+                                        {{ $product['vendor']['name'] }}
                                     </span></a></h6>
                         @endif
 
@@ -222,7 +228,8 @@
                                 href="#Vendor-info">Vendor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">({{ count($reviewCount)}} reviews)</a>
+                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
+                                href="#Reviews">({{ count($reviewCount) }} reviews)</a>
                         </li>
                     </ul>
                     <div class="tab-content shop_info_tab entry-main-content">
@@ -323,17 +330,18 @@
                         </div>
                         <div class="tab-pane fade" id="Vendor-info">
                             <div class="vendor-logo d-flex mb-30">
-                                <img src="{{ (!empty($product->vendor->photo)) ? url('upload/vendor_images/'.$product->vendor->photo):url('upload/no_image.jpg') }}" alt="" />
+                                <img src="{{ !empty($product->vendor->photo) ? url('upload/vendor_images/' . $product->vendor->photo) : url('upload/no_image.jpg') }}"
+                                    alt="" />
                                 <div class="vendor-name ml-15">
-                                    @if($product->vendor_id == NULL)
-        	<h6>
-                <a href="vendor-details-2.html">Owner</a>
-            </h6>
-        	@else
-        	<h6>
-                <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>
-            </h6>
-        	@endif
+                                    @if ($product->vendor_id == null)
+                                        <h6>
+                                            <a href="vendor-details-2.html">Owner</a>
+                                        </h6>
+                                    @else
+                                        <h6>
+                                            <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>
+                                        </h6>
+                                    @endif
 
                                     <div class="product-rate-cover text-end">
                                         <div class="product-rate d-inline-block">
@@ -343,24 +351,29 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($product->vendor_id == NULL)
-<ul class="contact-infor mb-50">
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>Owner</span></li>
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Contact Seller:</strong><span>Owner</span></li>
-                            </ul>
+                            @if ($product->vendor_id == null)
+                                <ul class="contact-infor mb-50">
+                                    <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}"
+                                            alt="" /><strong>Address: </strong> <span>Owner</span></li>
+                                    <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}"
+                                            alt="" /><strong>Contact Seller:</strong><span>Owner</span></li>
+                                </ul>
                             @else
-    	 <ul class="contact-infor mb-50">
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>{{ $product['vendor']['address'] }}</span></li>
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Contact Seller:</strong><span>{{ $product['vendor']['phone'] }}</span></li>
-    </ul>
+                                <ul class="contact-infor mb-50">
+                                    <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}"
+                                            alt="" /><strong>Address: </strong>
+                                        <span>{{ $product['vendor']['address'] }}</span></li>
+                                    <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}"
+                                            alt="" /><strong>Contact
+                                            Seller:</strong><span>{{ $product['vendor']['phone'] }}</span></li>
+                                </ul>
+                            @endif
 
-    	@endif
-
-    @if($product->vendor_id == NULL)
-      <p>Owner Information</p>
-    @else
-      <p>{{ $product['vendor']['vendor_short_info'] }}</p>
-    @endif
+                            @if ($product->vendor_id == null)
+                                <p>Owner Information</p>
+                            @else
+                                <p>{{ $product['vendor']['vendor_short_info'] }}</p>
+                            @endif
                         </div>
                         <div class="tab-pane fade" id="Reviews">
                             <!--Comments-->
@@ -376,56 +389,61 @@
 
                                             @php
 
-                                            $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
+                                                $reviews = App\Models\Review::where('product_id', $product->id)
+                                                    ->latest()
+                                                    ->limit(5)
+                                                    ->get();
                                             @endphp
 
 
-                                          @foreach($reviews as $review)
-
-                                          @if($review->status == 0)
-
-                                          @else 
-
-                                   
-                                          
-  <div class="single-comment justify-content-between d-flex mb-30">
-        <div class="user justify-content-between d-flex">
-            <div class="thumb text-center">
-                <img src="{{ (!empty($review->user->photo)) ? url('upload/user_images/'.$review->user->photo):url('upload/no_image.jpg') }}" alt="" />
-                <a href="#" class="font-heading text-brand">{{ $review->user->name }}</a>
-            </div>
-            <div class="desc">
-                <div class="d-flex justify-content-between mb-10">
-                    <div class="d-flex align-items-center">
-                        <span class="font-xs text-muted"> {{ Carbon\Carbon::parse($review->created_at)->diffForHumans() }} </span>
-                                                             </div>
-                    <div class="product-rate d-inline-block">
-
+                                            @foreach ($reviews as $review)
+                                                @if ($review->status == 0)
+                                                @else
+                                                    <div class="single-comment justify-content-between d-flex mb-30">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="{{ !empty($review->user->photo) ? url('upload/user_images/' . $review->user->photo) : url('upload/no_image.jpg') }}"
+                                                                    alt="" />
+                                                                <a href="#"
+                                                                    class="font-heading text-brand">{{ $review->user->name }}</a>
+                                                            </div>
+                                                            <div class="desc">
+                                                                <div class="d-flex justify-content-between mb-10">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <span class="font-xs text-muted">
+                                                                            {{ Carbon\Carbon::parse($review->created_at)->diffForHumans() }}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="product-rate d-inline-block">
 
 
-@if($review->rating == NULL)
-@elseif($review->rating == 1)
- <div class="product-rating" style="width: 20%"></div>
-@elseif($review->rating == 2)
- <div class="product-rating" style="width: 40%"></div>
-@elseif($review->rating == 3)
-<div class="product-rating" style="width: 60%"></div>
-@elseif($review->rating == 4)
- <div class="product-rating" style="width: 80%"></div>
-@elseif($review->rating == 5)
- <div class="product-rating" style="width: 100%"></div>
-@endif
-                    </div>
-                </div>
-                <p class="mb-10">{{ $review->comment }} <a href="#" class="reply">Reply</a></p>
-            </div>
-        </div>
-    </div>
 
-     @endif
-
-
-    @endforeach
+                                                                        @if ($review->rating == null)
+                                                                        @elseif($review->rating == 1)
+                                                                            <div class="product-rating"
+                                                                                style="width: 20%"></div>
+                                                                        @elseif($review->rating == 2)
+                                                                            <div class="product-rating"
+                                                                                style="width: 40%"></div>
+                                                                        @elseif($review->rating == 3)
+                                                                            <div class="product-rating"
+                                                                                style="width: 60%"></div>
+                                                                        @elseif($review->rating == 4)
+                                                                            <div class="product-rating"
+                                                                                style="width: 80%"></div>
+                                                                        @elseif($review->rating == 5)
+                                                                            <div class="product-rating"
+                                                                                style="width: 100%"></div>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <p class="mb-10">{{ $review->comment }} <a
+                                                                        href="#" class="reply">Reply</a></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -475,62 +493,69 @@
                             <div class="comment-form">
                                 <h4 class="mb-15">Add a review</h4>
                                 @guest
-                                <p> <b>For Add Product Review. You Need To Login First <a href="{{ route('login')}}">Login Here </a> </b></p>
+                                    <p> <b>For Add Product Review. You Need To Login First <a
+                                                href="{{ route('login') }}">Login Here </a> </b></p>
                                 @else
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-12">
+                                            <form class="form-contact comment_form" action="{{ route('store.review') }}"
+                                                id="commentForm">
+                                                @csrf
+                                                <div class="row">
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                                    @if ($product->vendor_id == null)
+                                                        <input type="hidden" name="hvendor_id" value="">
+                                                    @else
+                                                        <input type="hidden" name="hvendor_id"
+                                                            value="{{ $product->vendor_id }}">
+                                                    @endif
+
+                                                    <table class="table" style=" width: 60%;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="cell-level">&nbsp;</th>
+                                                                <th>1 star</th>
+                                                                <th>2 star</th>
+                                                                <th>3 star</th>
+                                                                <th>4 star</th>
+                                                                <th>5 star</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="cell-level">Quality</td>
+                                                                <td><input type="radio" name="quality" class="radio-sm"
+                                                                        value="1"></td>
+                                                                <td><input type="radio" name="quality" class="radio-sm"
+                                                                        value="2"></td>
+                                                                <td><input type="radio" name="quality" class="radio-sm"
+                                                                        value="3"></td>
+                                                                <td><input type="radio" name="quality" class="radio-sm"
+                                                                        value="4"></td>
+                                                                <td><input type="radio" name="quality" class="radio-sm"
+                                                                        value="5"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
 
 
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-12">
-                                        <form class="form-contact comment_form" action="{{ route('store.review') }}" id="commentForm">
-                                            @csrf
-                                            <div class="row">
-                                              <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                        @if($product->vendor_id == NULL)
-                                       <input type="hidden" name="hvendor_id" value="">
-                                       @else
-                                     <input type="hidden" name="hvendor_id" value="{{ $product->vendor_id }}">
-                                     @endif
-
-                                                <table class="table" style=" width: 60%;">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="cell-level">&nbsp;</th>
-                                                            <th>1 star</th>
-                                                            <th>2 star</th>
-                                                            <th>3 star</th>
-                                                            <th>4 star</th>
-                                                            <th>5 star</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        <tr>
-                                                <td class="cell-level">Quality</td>
-                                                <td><input type="radio" name="quality" class="radio-sm" value="1"></td>
-                                                <td><input type="radio" name="quality" class="radio-sm" value="2"></td>
-                                                <td><input type="radio" name="quality" class="radio-sm" value="3"></td>
-                                                <td><input type="radio" name="quality" class="radio-sm" value="4"></td>
-                                                <td><input type="radio" name="quality" class="radio-sm" value="5"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                                            placeholder="Write Comment"></textarea>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                                                placeholder="Write Comment"></textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="button button-contactForm">Submit Review</button>
-                                            </div>
-                                        </form>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="button button-contactForm">Submit
+                                                        Review</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
                                 @endguest
                             </div>
                         </div>
@@ -544,58 +569,63 @@
                 <div class="col-12">
                     <div class="row related-products">
 
-                 @foreach($relatedProduct as $product)
-                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                            <div class="product-cart-wrap hover-up">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" tabindex="0">
-                                            <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn small hover-up"
-                                            data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                            href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn small hover-up"
-                                            href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
+                        @foreach ($relatedProduct as $product)
+                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap hover-up">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}"
+                                                tabindex="0">
+                                                <img class="default-img"
+                                                    src="{{ asset($product->product_thambnail) }}"
+                                                    alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Quick view" class="action-btn small hover-up"
+                                                data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
+                                                    class="fi-rs-search"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up"
+                                                href="shop-wishlist.html" tabindex="0"><i
+                                                    class="fi-rs-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn small hover-up"
+                                                href="shop-compare.html" tabindex="0"><i
+                                                    class="fi-rs-shuffle"></i></a>
+                                        </div>
 
-                                    @php
-                                    $amount = $product->selling_price - $product->discount_price;
-                                    $discount = ($amount/$product->selling_price) * 100;
-                                    @endphp
+                                        @php
+                                            $amount = $product->selling_price - $product->discount_price;
+                                            $discount = ($amount / $product->selling_price) * 100;
+                                        @endphp
 
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        @if($product->discount_price == NULL)
-                                    <span class="new">New</span>
-                                    @else
-                                    <span class="hot"> {{ round($discount) }} %</span>
-                                    @endif
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            @if ($product->discount_price == null)
+                                                <span class="new">New</span>
+                                            @else
+                                                <span class="hot"> {{ round($discount) }} %</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <h2><a href="shop-product-right.html" tabindex="0">{{ $product->product_name }}</a></h2>
-                                    <div class="rating-result" title="90%">
-                                        <span> </span>
+                                    <div class="product-content-wrap">
+                                        <h2><a href="shop-product-right.html"
+                                                tabindex="0">{{ $product->product_name }}</a></h2>
+                                        <div class="rating-result" title="90%">
+                                            <span> </span>
+                                        </div>
+                                        @if ($product->discount_price == null)
+                                            <div class="product-price">
+                                                <span>${{ $product->selling_price }}</span>
+
+                                            </div>
+                                        @else
+                                            <div class="product-price">
+                                                <span>${{ $product->discount_price }}</span>
+                                                <span class="old-price">${{ $product->selling_price }}</span>
+                                            </div>
+                                        @endif
                                     </div>
-                                    @if($product->discount_price == NULL)
-                                    <div class="product-price">
-                                       <span>${{ $product->selling_price }}</span>
-
-                                   </div>
-
-                                   @else
-                                   <div class="product-price">
-                                       <span>${{ $product->discount_price }}</span>
-                                       <span class="old-price">${{ $product->selling_price }}</span>
-                                   </div>
-                                   @endif
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -607,4 +637,3 @@
 
 
 @endsection
-
