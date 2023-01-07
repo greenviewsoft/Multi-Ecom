@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use Carbon\Carbon;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    
+
 
 public function StoreReview(Request $request){
-    
+
     $product = $request->product_id;
 
     $vendor = $request->hvendor_id;
@@ -34,15 +34,15 @@ public function StoreReview(Request $request){
     ]);
 
 
-    
+
 $notification = array(
             'message' => 'Review Will Approve By Admin',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    } // End Method 
+    } // End Method
 
 
 
@@ -54,7 +54,7 @@ public function PendingReview(){
         $review = Review::where('status',0)->orderBy('id','DESC')->get();
         return view('backend.review.pending_review',compact('review'));
 
-    }// End Method 
+    }// End Method
 
 
 public function AproveReview($id){
@@ -66,8 +66,8 @@ public function AproveReview($id){
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
-    
+        return redirect()->back()->with($notification);
+
 }// End Method
 
 
@@ -79,12 +79,12 @@ public function ApproveReview(){
   $review = Review::where('status',1)->orderBy('id','DESC')->get();
         return view('backend.review.aprove_review',compact('review'));
 
-    }// End Method 
+    }// End Method
 
 
 
     public function DeleteReview($id){
-      
+
    Review::findOrFail($id)->delete();
 
     $notification = array(
@@ -92,10 +92,19 @@ public function ApproveReview(){
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
-   
+        return redirect()->back()->with($notification);
+
 
        }// End Method
+
+       public function VendorAllReview(){
+
+        $id = Auth::user()->id;
+
+        $review = Review::where('vendor_id',$id)->where('status',1)->orderBy('id','DESC')->get();
+        return view('vendor.backend.review.approve_review',compact('review'));
+
+    }// End Method
 
 
 }

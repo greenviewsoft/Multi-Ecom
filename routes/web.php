@@ -122,6 +122,12 @@ Route::controller(VendorProductController::class)->group(function(){
 
     });
 
+    Route::controller(ReviewController::class)->group(function(){
+
+        Route::get('/vendor/all/review' , 'VendorAllReview')->name('vendor.all.review');
+
+       });
+
 
 }); // End Vendor  Groups Middleware
 
@@ -257,7 +263,7 @@ Route::controller(ReportController::class)->group(function(){
 Route::controller(ActiveUserController::class)->group(function(){
     Route::get('/all/user', 'AllUser')->name('all-user');
     Route::get('/all/vendor', 'AllVendor')->name('all-vendor');
-   
+
 
 
 });
@@ -364,13 +370,13 @@ Route::controller(ActiveUserController::class)->group(function(){
 
 
 
-// Admin Reviw All Route 
+// Admin Reviw All Route
 Route::controller(ReviewController::class)->group(function(){
 
- Route::get('/pending/review' , 'PendingReview')->name('pending.review'); 
- Route::get('/aprove/review' , 'ApproveReview')->name('aprove.review'); 
- Route::get('/delete/review/{id}' , 'DeleteReview')->name('review.delete'); 
- Route::get('/aprove/review/{id}' , 'AproveReview')->name('review.aprove'); 
+ Route::get('/pending/review' , 'PendingReview')->name('pending.review');
+ Route::get('/aprove/review' , 'ApproveReview')->name('aprove.review');
+ Route::get('/delete/review/{id}' , 'DeleteReview')->name('review.delete');
+ Route::get('/aprove/review/{id}' , 'AproveReview')->name('review.aprove');
 
 });
 
@@ -444,15 +450,15 @@ Route::controller(CartController::class)->group(function(){
     Route::controller(BlogController::class)->group(function(){
     Route::get('/blog', 'AllBlog')->name('home.blog');
     Route::get('/post/details/{id}/{slug}', 'PostDetails');
-    Route::get('/post/details/{id}/{slug}' , 'BlogDetails'); 
-  Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');  
+    Route::get('/post/details/{id}/{slug}' , 'BlogDetails');
+  Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');
   });
 
 
 // Frontend End Review All Route
     Route::controller(ReviewController::class)->group(function(){
     Route::get('/store/review', 'StoreReview')->name('store.review');
-  
+
   });
 
 

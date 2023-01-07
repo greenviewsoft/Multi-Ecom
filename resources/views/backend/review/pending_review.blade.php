@@ -30,21 +30,23 @@
 								<thead>
 			<tr>
 				<th>Sl</th>
+                <th>image </th>
+                <th>Product </th>
+                <th>User </th>
 				<th>Comment </th>
-				<th>User </th>
-				<th>Product </th>
 				<th>Rating </th>
-				<th>Status </th> 
-				<th>Action</th> 
+				<th>Status </th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
-	@foreach($review as $key => $item)		
+	@foreach($review as $key => $item)
 			<tr>
 				<td> {{ $key+1 }} </td>
-				<td>{{ Str::limit($item->comment,48)  }}</td>
-				<td>{{ $item['user']['name'] }}</td>
-				<td>{{Str::limit($item['product']['product_name'], 48)  }}</td>
+                <td>  <img src="{{ asset($item['product']['product_thambnail']) }}" style="width: 40px; height:40px;">  </td>
+                <td>{{Str::limit($item['product']['product_name'], 48)  }}</td>
+                <td>{{ $item['user']['name'] }}</td>
+				<td>{{Str::limit($item->comment,25)  }}</td>
 				<td>
 			@if($item->rating == NULL)
 			<i class="bx bxs-star text-secondary"></i>
@@ -97,13 +99,13 @@
 <a href="{{ route('review.aprove',$item->id) }}" class="btn btn-danger">Approve</a>
 
 
-				</td> 
+				</td>
 			</tr>
 			@endforeach
 
 
 		</tbody>
-		
+
 	</table>
 						</div>
 					</div>
