@@ -1,6 +1,11 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+
+@section('title')
+  strip Payment Page
+@endsection
+
 <style>
     /**
  * The CSS shown here will not be introduced in the Quickstart guide, but shows
@@ -30,7 +35,7 @@
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a> 
+                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> Stripe Payment
                 </div>
             </div>
@@ -54,7 +59,7 @@
 
     </div>
     <div class="divider-2 mb-30"></div>
-    <div class="table-responsive order_table checkout"> 
+    <div class="table-responsive order_table checkout">
 
  <table class="table no-border">
         <tbody>
@@ -128,7 +133,7 @@
     <div class="divider-2 mb-30"></div>
     <div class="table-responsive order_table checkout">
 
-     
+
            <form action="{{ route('stripe.order') }}" method="post" id="payment-form">
             @csrf
             <div class="form-row">
@@ -148,7 +153,7 @@
 
 
             </label>
-                             
+
             <div id="card-element">
                 <!-- A Stripe Element will be inserted here. -->
             </div>

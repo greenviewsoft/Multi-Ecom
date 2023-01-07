@@ -1,6 +1,11 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+   My Cart Page
+@endsection
+
+
  <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
@@ -79,7 +84,7 @@
         <div class="table-responsive">
             <table class="table no-border">
                 <tbody id="couponCalField">
-                   
+
                 </tbody>
             </table>
                         </div>

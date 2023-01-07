@@ -2,7 +2,9 @@
 @section('main')
 
 
-
+@section('title')
+{{ $breadcat->category_name }} Category
+@endsection
 
 
 

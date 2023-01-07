@@ -1,13 +1,15 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
-
+@section('title')
+   Chekout Page
+@endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a> 
+                    <a href="/" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> Checkout
                 </div>
             </div>
@@ -61,8 +63,8 @@
                                 <div class="form-group col-lg-6">
                                     <div class="custom_select">
                                         <select name="district_id"  class="form-control">
-                                            
-                                            
+
+
 
                                         </select>
                                     </div>
@@ -77,7 +79,7 @@
                                 <div class="form-group col-lg-6">
                                     <div class="custom_select">
                                         <select name="state_id" class="form-control ">
-                                            
+
 
                                         </select>
                                     </div>
@@ -97,7 +99,7 @@
 
 
 
-                     
+
                     </div>
                 </div>
 
@@ -186,7 +188,7 @@
                 </td>
             </tr>
         	@endif
-            
+
         </tbody>
     </table>
 

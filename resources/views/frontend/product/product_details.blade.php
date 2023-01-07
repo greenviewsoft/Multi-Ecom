@@ -6,6 +6,7 @@
 @section('title')
     {{ $product->product_name }}
 @endsection
+
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">

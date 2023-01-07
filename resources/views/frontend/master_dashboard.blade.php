@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>My Shop Online Store</title>
+    <title>   @yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -99,9 +99,9 @@
     break;
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
-    break; 
+    break;
  }
- @endif 
+ @endif
 </script>
 
 
@@ -271,7 +271,7 @@ function addToCartDetails(){
      var product_name = $('#dpname').text();
      var id = $('#dproduct_Id').val();
      var color = $('#dcolor option:selected').text();
-     var size = $('#dsize option:selected').text(); 
+     var size = $('#dsize option:selected').text();
      var vendor = $('#vproduct_id').val();
      var quantity = $('#dqty').val();
      $.ajax({
@@ -833,7 +833,7 @@ function RemoveCompare(id){
 <!-- applyCoupon Start-->
 
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
 function applyCoupon(){
      var coupon_name = $('#coupon_name').val();
@@ -889,7 +889,7 @@ function applyCoupon(){
 
  <!-- End Copun Calcalation Method-->
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
  function couponCalculation(){
         $.ajax({
@@ -911,7 +911,7 @@ function applyCoupon(){
                             <h4 class="text-brand text-end">$${data.total}</h4>
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td class="cart_total_label">
                             <h6 class="text-muted"> Grand Total</h6>
@@ -920,7 +920,7 @@ function applyCoupon(){
                             <h4 class="text-brand text-end">$${data.total}</h4>
                         </td>
                     </tr>
-                 `)     
+                 `)
 
                   }else{
                    $('#couponCalField').html(
@@ -935,7 +935,7 @@ function applyCoupon(){
                             <h4 class="text-brand text-end">$${data.subtotal}</h4>
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td class="cart_total_label">
                             <h6 class="text-muted"> Coupon</h6>
@@ -963,18 +963,18 @@ function applyCoupon(){
                         </td>
                     </tr>
 
-                    `)    
-                    
+                    `)
+
 
 
             }
 
 
 
-                
+
             }
         })
-     } 
+     }
 
 
      couponCalculation();
@@ -1015,7 +1015,7 @@ function applyCoupon(){
 </script>
 
 <script type="text/javascript">
-    // Coupon Remove Start 
+    // Coupon Remove Start
   function couponRemove(){
             $.ajax({
                 type: "GET",
@@ -1024,34 +1024,34 @@ function applyCoupon(){
                 success:function(data){
                    $('#couponField').show();
                    couponCalculation();
-                     // Start Message 
+                     // Start Message
             const Toast = Swal.mixin({
                   toast: true,
                   position: 'top-end',
-                  
+
                   showConfirmButton: false,
-                  
+
             })
             if ($.isEmptyObject(data.error)) {
-                    
+
                     Toast.fire({
                     type: 'success',
-                    icon: 'success', 
-                    title: data.success, 
+                    icon: 'success',
+                    title: data.success,
                     })
             }else{
-               
+
            Toast.fire({
                     type: 'error',
-                    icon: 'error', 
-                    title: data.error, 
+                    icon: 'error',
+                    title: data.error,
                     })
                 }
-              // End Message  
+              // End Message
                 }
             })
         }
-// Coupon Remove End 
+// Coupon Remove End
 </script>
 
 

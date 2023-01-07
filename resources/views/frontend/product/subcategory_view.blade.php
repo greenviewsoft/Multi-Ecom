@@ -1,5 +1,12 @@
 @extends('frontend.master_dashboard')
 @section('main')
+
+
+@section('title')
+{{ $breadsubcat->category->category_name }}  {{ $breadsubcat->subcategory_name }}
+
+@endsection
+
 <div class="page-header mt-30 mb-50">
     <div class="container">
         <div class="archive-header">

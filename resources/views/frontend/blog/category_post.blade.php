@@ -1,12 +1,18 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+@foreach($breadcat as $cat)
+ {{ $cat->blog_category_name }}
+ @endforeach
+     @endsection
+
 <div class="page-header mt-30 mb-75">
             <div class="container">
                 <div class="archive-header">
                     <div class="row align-items-center">
                         <div class="col-xl-3">
-                            <h3 class="mb-15">  
+                            <h3 class="mb-15">
                         @foreach($breadcat as $cat)
                         {{ $cat->blog_category_name }}
                         @endforeach</h3>
@@ -73,7 +79,7 @@
                         </div>
                         <div class="loop-grid loop-list pr-30 mb-50">
 
-        @foreach($blogpost as $post)                	
+        @foreach($blogpost as $post)
 <article class="wow fadeIn animated hover-up mb-30 animated">
     <div class="post-thumb" style="background-image: url({{ asset($post->post_image)  }})">
         <div class="entry-meta">
@@ -94,7 +100,7 @@
         </div>
     </div>
 </article>
-            @endforeach                
+            @endforeach
 
 
 

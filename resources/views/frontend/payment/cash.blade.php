@@ -1,14 +1,18 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+  Cash Payment Page
+@endsection
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
 
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a> 
-                    <span></span> Cash On Delivry 
+                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> Cash On Delivry
                 </div>
             </div>
         </div>
@@ -31,7 +35,7 @@
 
     </div>
     <div class="divider-2 mb-30"></div>
-    <div class="table-responsive order_table checkout"> 
+    <div class="table-responsive order_table checkout">
 
  <table class="table no-border">
         <tbody>
@@ -105,12 +109,12 @@
     <div class="divider-2 mb-30"></div>
     <div class="table-responsive order_table checkout">
 
-     
+
            <form action="{{ route('cash.order') }}" method="post">
             @csrf
             <div class="form-row">
               <label for="card-element">
-            
+
 
   <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
   <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
@@ -125,8 +129,8 @@
 
 
             </label>
-                             
-            
+
+
             </div>
                <br>
                 <button class="btn btn-primary">Submit order</button>
@@ -148,7 +152,7 @@
             </div>
         </div>
 
-      
+
 
 
 @endsection

@@ -1,6 +1,9 @@
 @extends('frontend.master_dashboard')
 @section('main')
 
+@section('title')
+{{ $blogdetails->post_title }}
+     @endsection
 
  <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -11,7 +14,7 @@
                     	{{ $cat->blog_category_name }}
                     	@endforeach
 
-                </a> 
+                </a>
                      <span></span> {{ $blogdetails->post_title }}
                 </div>
             </div>
@@ -140,9 +143,9 @@
     <a href="#" class="font-heading text-brand">Sienna</a>
   </div>
    <div class="desc">
-    <div class="d-flex justify-content-between mb-10">  
+    <div class="d-flex justify-content-between mb-10">
         <div class="d-flex align-items-center">      <span class="font-xs text-muted">December 4, 2022 at 3:12 pm </span>                                             </div>
-           <div class="product-rate d-inline-block">   
+           <div class="product-rate d-inline-block">
             <div class="product-rating" style="width: 80%"></div>                       </div>  </div>
   <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
  </div>
@@ -155,9 +158,9 @@
    <a href="#" class="font-heading text-brand">Brenna</a>
      </div>
  <div class="desc">
-    <div class="d-flex justify-content-between mb-10">   <div class="d-flex align-items-cer">                                                                                     </div>   
+    <div class="d-flex justify-content-between mb-10">   <div class="d-flex align-items-cer">                                                                                     </div>
       <div class="product-rate d-inline-block">
-       <div class="product-rating" style="width: 80%"></div>                           
+       <div class="product-rating" style="width: 80%"></div>
            </div>
    </div>
     <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
@@ -237,4 +240,3 @@
 
 
 @endsection
-  
