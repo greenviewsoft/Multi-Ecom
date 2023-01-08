@@ -11,6 +11,7 @@
             </div>
             <!--navigation-->
             <ul class="metismenu" id="menu">
+                
                 <li>
                     <a href="{{ route('admin.dashboard') }}">
                         <div class="parent-icon"><i class='bx bx-cookie'></i>

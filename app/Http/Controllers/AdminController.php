@@ -6,13 +6,22 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
     public function AdminDashBoard()
     {
 
-        return view('admin.index');
+    $date = Carbon::today();
+    $sales = Order::wheredate('created_at',$date)->sum('amount');
+   $weksales = Order::where('created_at', '>=', Carbon::now()->subDays(7))->get();
+   $total = $weksales->sum('amount');
+
+
+
+        return view('admin.index',compact('sales','total'));
 
     } // end method
 
