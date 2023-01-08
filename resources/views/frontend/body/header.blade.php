@@ -1,3 +1,9 @@
+ @php
+
+ $SiteSetting = App\Models\siteSetting::find(1); 
+
+ @endphp
+
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
         <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
@@ -12,7 +18,7 @@
                             <li><a href="page-account.html">My Cart</a></li>
                             <li><a href="shop-wishlist.html">Checkout</a></li>
                             <li><a href="shop-order.html">Order Tracking</a></li>
-                             <li><a href="#">Call Now: 123</a></li>
+                        
                         </ul>
                     </div>
                 </div>
@@ -46,7 +52,7 @@
                                 </ul>
                             </li>
 
-                             <li>Need help? Call Us: <strong class="text-brand"> 34343 </strong></li>
+                             <li>Need help? Call Us:   <strong class="text-brand">   {{ $SiteSetting->support_phone }} </strong></li>
 
                         </ul>
                     </div>

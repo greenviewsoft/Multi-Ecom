@@ -387,6 +387,9 @@ Route::controller(SiteSettingController::class)->group(function(){
 
  Route::get('/site/setting' , 'SiteSetting')->name('site.setting');
  Route::post('/store/site/setting' , 'StoreSiteSetting')->name('site.setting.store');
+
+  Route::get('/seo/setting' , 'SeoSetting')->name('seo.setting');
+  Route::post('/seo/store' , 'SeoStore')->name('seo.setting.store');
  
 
 });
