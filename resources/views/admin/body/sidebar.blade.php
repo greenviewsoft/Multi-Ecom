@@ -248,7 +248,7 @@
 
 
 
- <li>
+               <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon"> <i class="bx bx-user-check"></i>
                         </div>
@@ -259,6 +259,24 @@
                         </li>
                       <li> <a href="{{ route('aprove.review') }} "><i class="bx bx-right-arrow-alt"></i>All Aproved Review</a>
                         </li>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+
+               <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"> <i class="bx bx-user-check"></i>
+                        </div>
+                        <div class="menu-title">Setting Manage</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('site.setting') }} "><i class="bx bx-right-arrow-alt"></i>Site Setting</a>
+                        </li>
+                    
                         </li>
 
                     </ul>

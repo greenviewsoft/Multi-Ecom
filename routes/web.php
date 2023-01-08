@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\wishlistController;
@@ -377,6 +378,16 @@ Route::controller(ReviewController::class)->group(function(){
  Route::get('/aprove/review' , 'ApproveReview')->name('aprove.review');
  Route::get('/delete/review/{id}' , 'DeleteReview')->name('review.delete');
  Route::get('/aprove/review/{id}' , 'AproveReview')->name('review.aprove');
+
+});
+
+
+// Site Setting  All Route
+Route::controller(SiteSettingController::class)->group(function(){
+
+ Route::get('/site/setting' , 'SiteSetting')->name('site.setting');
+ Route::post('/store/site/setting' , 'StoreSiteSetting')->name('site.setting.store');
+ 
 
 });
 
