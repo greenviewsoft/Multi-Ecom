@@ -46,7 +46,7 @@
                                 </ul>
                             </li>
 
-                             <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                             <li>Need help? Call Us: <strong class="text-brand"> 34343 </strong></li>
 
                         </ul>
                     </div>
@@ -54,11 +54,18 @@
             </div>
         </div>
     </div>
+   
+ @php
+
+ $SiteSetting = App\Models\siteSetting::find(1); 
+
+ @endphp
+
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                    <a href="index.html"><img src="{{ asset($SiteSetting->logo) }}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -313,7 +320,7 @@
 
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg') }}" alt="hotline" />
-                    <p>01765444480<span>Main Support Center</span></p>
+                    <p>{{ $SiteSetting->support_phone }}<span>Main Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
