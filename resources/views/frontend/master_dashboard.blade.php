@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
+@php
+$seo =  App\Models\Seo::find(1);
+@endphp
+
 <head>
     <meta charset="utf-8" />
     <title>   @yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
+    <meta name="title" content="{{ $seo->meta_title }}" />
+    <meta name="author" content="{{ $seo->meta_author }}" />
+    <meta name="keywords" content="{{ $seo->meta_keyword }}" />
+    <meta name="description" content="{{ $seo->meta_descripion }}" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
