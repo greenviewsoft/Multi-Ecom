@@ -11,6 +11,9 @@
     $pending = App\Models\Order::where('status','pending')->get();
     $vendor = App\Models\User::where('status','active')->where('role','vendor')->get();
     $customer = App\Models\User::where('status','active')->where('role','user')->get();
+    $countproducts = App\Models\Product::count();
+    //$countproducts = App\Models\Product::where('id', '<=','product_qty')->count();
+
 @endphp
 
 
@@ -154,6 +157,26 @@
                                 </div>
                                 <div class="d-flex align-items-center text-white">
                                     <p class="mb-0">Total User </p>
+                                    <p class="mb-0 ms-auto">+2.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                                </div>
+                            </div>
+                         </div>
+                        </div>
+
+                         <div class="col">
+                            <div class="card radius-10 bg-success bg-gradient">
+                             <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="mb-0 text-white"> {{ $countproducts }}  </h5>
+                                    <div class="ms-auto">
+                                        <i class='bx bx-envelope fs-3 text-white'></i>
+                                    </div>
+                                </div>
+                                <div class="progress my-3 bg-light-transparent" style="height:3px;">
+                                    <div class="progress-bar bg-white" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="d-flex align-items-center text-white">
+                                    <p class="mb-0">Total Product </p>
                                     <p class="mb-0 ms-auto">+2.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
                                 </div>
                             </div>

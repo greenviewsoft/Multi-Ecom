@@ -343,6 +343,13 @@ Route::controller(ActiveUserController::class)->group(function(){
     Route::get('/delete/product/multiimage/{id}' , 'ProductMultiimageDelete')->name('delete.product.multiimage');
     Route::get('/product/inactive/{id}' , 'ProductInactive')->name('product.inactive');
     Route::get('/product/active/{id}' , 'ProductActive')->name('product.active');
+
+       
+
+     //Product Stock
+
+       Route::get('/product/stock' , 'ProductStock')->name('product.stock');
+
 });
 
 
@@ -477,7 +484,7 @@ Route::controller(CartController::class)->group(function(){
 
 
 
-
+/// User All Route and Middleware
 Route::middleware(['auth','role:user'])->group(function(){
 
     // Whish list Route
@@ -533,6 +540,8 @@ Route::controller(AllUserController::class)->group(function(){
 
 
 
+  // order Trackking
+   Route::get('/user/order/track' , 'UserTrackOrder')->name('user.track.order');
 
 });
 

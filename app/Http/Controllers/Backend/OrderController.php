@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
+use DB;
 use Carbon\Carbon;
 use Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -55,6 +57,7 @@ return view('backend.orders.processing_orders',compact('order'));
 
 public function AdminDeliverdOrder(){
 
+
 $order = Order::where('status','delivered') ->OrderBy('id', 'desc')->get();
 return view('backend.orders.deliverd_orders',compact('order'));
 
@@ -91,6 +94,11 @@ public function ConfirmToProcessing($order_id){
 
 
 public function ProcessingToDelivery($order_id){
+    $product = OrderItem::where('order_id',$order_id)->get();
+foreach($product as $item){
+        Product::where('id',$item->product_id)
+                ->update(['product_qty' => DB::raw('product_qty-'.$item->qty) ]);
+    } 
  Order::findOrFail($order_id)->update(['status' => 'delivered']);
 
         $notification = array(

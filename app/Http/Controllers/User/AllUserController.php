@@ -100,4 +100,11 @@ return view('frontend.order.return_order_view',compact('orders'));
 
 
 
+public function UserTrackOrder(){
+
+return view('frontend.userdashboard.track_order_view');
+
+}// End Method
+
+
 }
