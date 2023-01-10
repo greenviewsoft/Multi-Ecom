@@ -17,7 +17,7 @@
 
                             <li><a href="page-account.html">My Cart</a></li>
                             <li><a href="shop-wishlist.html">Checkout</a></li>
-                            <li><a href="shop-order.html">Order Tracking</a></li>
+                            <li><a href="{{ route('user.track.order') }}">Order Tracking</a></li>
                         
                         </ul>
                     </div>
@@ -176,7 +176,7 @@
                             <a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My Account</a>
                         </li>
                         <li>
-                            <a href="{{ route('dashboard') }}"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
+                            <a href="{{ route('user.track.order') }}"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
                         </li>
                         <li>
                             <a href="{{ route('dashboard') }}"><i class="fi fi-rs-label mr-10"></i>My Voucher</a>

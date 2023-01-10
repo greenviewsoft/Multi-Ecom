@@ -133,7 +133,7 @@
                         <li><a href="#">Sign In</a></li>
                         <li><a href="#">View Cart</a></li>
                         <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>
+                        <li><a href="{{ route('user.track.order') }}">Track My Order</a></li>
                         <li><a href="#">Help Ticket</a></li>
                         <li><a href="#">Shipping Details</a></li>
                         <li><a href="#">Compare products</a></li>

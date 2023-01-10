@@ -542,6 +542,7 @@ Route::controller(AllUserController::class)->group(function(){
 
   // order Trackking
    Route::get('/user/order/track' , 'UserTrackOrder')->name('user.track.order');
+   Route::post('/user/order/tracking' , 'OrderTracking')->name('order.tracking');
 
 });
 
