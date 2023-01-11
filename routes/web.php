@@ -344,7 +344,7 @@ Route::controller(ActiveUserController::class)->group(function(){
     Route::get('/product/inactive/{id}' , 'ProductInactive')->name('product.inactive');
     Route::get('/product/active/{id}' , 'ProductActive')->name('product.active');
 
-       
+
 
      //Product Stock
 
@@ -389,6 +389,8 @@ Route::controller(ReviewController::class)->group(function(){
 });
 
 
+
+
 // Site Setting  All Route
 Route::controller(SiteSettingController::class)->group(function(){
 
@@ -397,7 +399,7 @@ Route::controller(SiteSettingController::class)->group(function(){
 
   Route::get('/seo/setting' , 'SeoSetting')->name('seo.setting');
   Route::post('/seo/store' , 'SeoStore')->name('seo.setting.store');
- 
+
 
 });
 
@@ -545,6 +547,13 @@ Route::controller(AllUserController::class)->group(function(){
    Route::post('/user/order/tracking' , 'OrderTracking')->name('order.tracking');
 
 });
+
+          // Search All Route
+Route::controller(IndexController::class)->group(function(){
+    Route::post('/search' , 'ProductSearch')->name('product.search');
+    Route::post('/search-product' , 'SearchProduct');
+   });
+
 
 }); //end group User Middleware
 

@@ -1,6 +1,6 @@
  @php
 
- $SiteSetting = App\Models\siteSetting::find(1); 
+ $SiteSetting = App\Models\siteSetting::find(1);
 
  @endphp
 
@@ -18,7 +18,7 @@
                             <li><a href="page-account.html">My Cart</a></li>
                             <li><a href="shop-wishlist.html">Checkout</a></li>
                             <li><a href="{{ route('user.track.order') }}">Order Tracking</a></li>
-                        
+
                         </ul>
                     </div>
                 </div>
@@ -60,10 +60,10 @@
             </div>
         </div>
     </div>
-   
+
  @php
 
- $SiteSetting = App\Models\siteSetting::find(1); 
+ $SiteSetting = App\Models\siteSetting::find(1);
 
  @endphp
 
@@ -75,7 +75,9 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
+                        <form action="{{ route('product.search') }}" method="post">
+                            @csrf
+
                             <select class="select-active">
                                 <option>All Categories</option>
                                 <option>Milks and Dairies</option>
@@ -89,7 +91,8 @@
                                 <option>Noodles & Rice</option>
                                 <option>Ice cream</option>
                             </select>
-                            <input type="text" placeholder="Search for items..." />
+                            <input name="search" id="search" placeholder="Search for items..." />
+                            <div id="searchProducts"></div>
                         </form>
                     </div>
                     <div class="header-action-right">
