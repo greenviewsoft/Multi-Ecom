@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\SiteSettingController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\wishlistController;
@@ -403,6 +404,33 @@ Route::controller(SiteSettingController::class)->group(function(){
 
 });
 
+
+
+// Permission   All Route
+Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/permission' , 'AllPermission')->name('all.permission');
+    Route::get('/add/permission' , 'AddPermission')->name('add.permission');
+    Route::post('/store/permission' , 'StorePermission')->name('store.permission');
+    Route::get('/edit/permission/{id}' , 'EditPermission')->name('edit.permission');
+    Route::post('/update/permission/' , 'UpdatePermission')->name('update.permission');
+    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+   });
+
+
+
+// Roles   All Route
+Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/roles' , 'AllRoles')->name('all.roles');
+    Route::get('/add/roles' , 'AddRoles')->name('add.roles');
+    Route::post('/store/roles' , 'StoreRoles')->name('store.roles');
+    Route::get('/edit/roles/{id}' , 'EditRoles')->name('edit.roles');
+    Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+    Route::get('/deleted/roles/{id}', 'DeletedRoles')->name('delete.roles');
+    Route::get('/add/roles/permission' , 'AddRolesPermission')->name('add.roles.permission');
+
+   });
 
 
    }); // Admin End Middleware

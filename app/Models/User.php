@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Cache;
+use Spatie\Permission\Traits\HasRoles;
+use DB;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable,HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -39,12 +42,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-// User Active Now 
+// User Active Now
 
     public function UserOnline(){
         return Cache::has('user-is-online' . $this->id);
-    
 
+
+    }// End Method
+
+    public static function getpermissionGroups(){
+        $permission_groups = FacadesDB::table('permissions')->select('group_name')->groupBy('group_name')->get();
+        return $permission_groups;
+    } // End method
+
+    public static function getpermissionByGroupName($group_name){
+        $permissions = FacadesDB::table('permissions')
+                        ->select('name','id')
+                        ->where('group_name',$group_name)
+                        ->get();
+        return $permissions;
     }// End Method
 
 
