@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
+use App\Notifications\RegisterUserNotification;
+use Illuminate\Support\Facades\Notification;
 class RegisteredUserController extends Controller
 {
     /**
@@ -33,6 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -49,6 +51,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        $nuser = User::where('role','admin')->get();
+        Notification::send($nuser, new RegisterUserNotification($request));
         return redirect(RouteServiceProvider::HOME);
     }
 }
