@@ -10,7 +10,8 @@ use Carbon\Carbon;
 use App\Models\Order;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use App\Notifications\VendorAproveNotification;
+use Illuminate\Support\Facades\Notification;
 
 class AdminController extends Controller
 {
@@ -140,7 +141,8 @@ class AdminController extends Controller
             'message' => 'Vendor Active Successfully',
             'alert-type' => 'success'
         );
-
+        $vuser = User::where('role','vendor')->get();
+        Notification::send($vuser, new VendorAproveNotification($request));
         return redirect()->route('active.vendor')->with($notification);
 
     }// End Method
