@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Traits\HasRoles;
-use DB;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
 class User extends Authenticatable
@@ -63,6 +62,17 @@ class User extends Authenticatable
         return $permissions;
     }// End Method
 
+public static function roleHasPermissions($role,$permissions){
 
+    $hasPermission = true;
+    foreach($permissions as $permission){
+        if (!$role->hasPermissionTo($permission->name)) {
+            $hasPermission = false;
+            return $hasPermission;
+        }
+        return $hasPermission;
+    }
+
+}// End Method
 
 }

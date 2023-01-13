@@ -11,7 +11,11 @@ use App\Models\OrderItem;
 use Carbon\Carbon;
 Use App\Mail\OrderMail;
 use Illuminate\Support\Facades\Mail;
-use Auth;
+use App\Models\User;
+use App\Notifications\OrderComplete;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Notification;
+
 
 class StripeController extends Controller
 {
@@ -22,7 +26,7 @@ class StripeController extends Controller
         }else{
             $total_amount = round(Cart::total());
         }
-        
+
 
 \Stripe\Stripe::setApiKey('sk_test_51MFvcaJbxLGhffnrOLatYlxR098g4RR666wckI69QtVQx6ai0dxD6pvfQmfQk3pyJ6fEh3yvfpEiTH947pIQj7M500ueOcQ1tC');
 
@@ -40,7 +44,7 @@ class StripeController extends Controller
 
 
 $order_id = Order::insertGetId([
-            'user_id' => Auth::id(),
+            'user_id' => FacadesAuth::id(),
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
             'state_id' => $request->state_id,
@@ -61,16 +65,16 @@ $order_id = Order::insertGetId([
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
-            'order_year' => Carbon::now()->format('Y'), 
+            'order_year' => Carbon::now()->format('Y'),
             'status' => 'pending',
-            'created_at' => Carbon::now(),  
-        ]);    
-
-       
+            'created_at' => Carbon::now(),
+        ]);
 
 
 
-// Start Send Mail 
+
+
+// Start Send Mail
 
 $invoice = Order::findOrFail($order_id);
 
@@ -85,7 +89,7 @@ $data = [
 
 Mail::to($request->email)->send(new OrderMail($data));
 
-// End Send Mail 
+// End Send Mail
 
 
 
@@ -119,16 +123,18 @@ Mail::to($request->email)->send(new OrderMail($data));
             'alert-type' => 'success'
         );
 
-        return redirect()->route('dashboard')->with($notification); 
+        return redirect()->route('dashboard')->with($notification);
 
 
 
-    }// End Method 
+    }// End Method
 
 
 
 
     public function CashOrder(Request $request){
+
+        $user = User::where('role','admin')->get();
 
         if(Session::has('coupon')){
             $total_amount = Session::get('coupon')['total_amount'];
@@ -138,7 +144,7 @@ Mail::to($request->email)->send(new OrderMail($data));
 
 
         $order_id = Order::insertGetId([
-            'user_id' => Auth::id(),
+            'user_id' => FacadesAuth::id(),
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
             'state_id' => $request->state_id,
@@ -159,15 +165,15 @@ Mail::to($request->email)->send(new OrderMail($data));
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
-            'order_year' => Carbon::now()->format('Y'), 
+            'order_year' => Carbon::now()->format('Y'),
             'status' => 'pending',
-            'created_at' => Carbon::now(),  
+            'created_at' => Carbon::now(),
 
         ]);
 
  // Start Send Email
 
-      
+
         $invoice = Order::findOrFail($order_id);
 
         $data = [
@@ -179,7 +185,7 @@ Mail::to($request->email)->send(new OrderMail($data));
 
         ];
 
-        // End Send Email 
+        // End Send Email
 
 
         $carts = Cart::content();
@@ -210,11 +216,11 @@ Mail::to($request->email)->send(new OrderMail($data));
     'message' => 'Cash On Delivery Order  successfully!',
     'alert-type' => 'success'
 );
-
+  Notification::send($user, new OrderComplete($request->name));
   return redirect()->route('dashboard')->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
 
 

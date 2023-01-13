@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
 use Svg\Tag\Rect;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class RoleController extends Controller
 {
@@ -73,7 +74,7 @@ $per_id = $request->id;
         }// End method DeletePermission
 
 
-        public function AllRoles(){
+            public function AllRoles(){
             $roles = Role::all();
             return view('backend.pages.roles.all_roles',compact('roles'));
             }//end  method AllPermission
@@ -138,7 +139,71 @@ $per_id = $request->id;
                 return view('backend.pages.roles.add_roles_permission',compact('roles', 'permissions', 'permission_groups'));
             }// End Method
 
+            public function RolePermissionStore(Request $request){
+
+                $data = array();
+                $permissions = $request->permission;
+
+                foreach($permissions as $key => $item){
+                    $data['role_id'] = $request->role_id;
+                    $data['permission_id'] = $item;
+                    FacadesDB::table('role_has_permissions')->insert($data);
+                }
+
+                 $notification = array(
+                    'message' => 'Role Permission Added Successfully',
+                    'alert-type' => 'success'
+                );
+
+                return redirect()->route('all.roles')->with($notification);
+
+            }// End Method
 
 
+            public function AllRolePermission(){
+                $roles = Role::all();
+                return view('backend.pages.roles.all_roles_permission',compact('roles'));
+                }//end  method AllPermission
+
+
+public function EditRolePermission($id){
+    $role = Role::findOrFail($id);
+    $permissions = Permission::all();
+    $permission_groups = User::getpermissionGroups();
+    return view('backend.pages.roles.edit_role_permission',compact('role', 'permissions','permission_groups'));
+
+
+    }// End Method
+
+    public function UpdateRolePermission(Request $request ,$id){
+$role = Role::findOrFail($id);
+$permissions = $request->permission;
+if(!empty($permissions)){
+$role->syncPermissions($permissions);
+
+}
+
+$notification = array(
+    'message' => 'Role Permission Updated Successfully',
+    'alert-type' => 'success'
+);
+
+return redirect()->route('all.roles.permission')->with($notification);
+    }// End Method
+
+    public function DeleteRolePermission($id){
+        $role = Role::findOrFail($id);
+        if (!is_null($role)) {
+            $role->delete();
+        }
+
+        $notification = array(
+            'message' => 'Role Permission Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.roles.permission')->with($notification);
+
+    }// End Method
 
 }
