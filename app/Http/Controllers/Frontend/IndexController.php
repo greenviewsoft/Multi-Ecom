@@ -69,7 +69,7 @@ public function Index()
 public function VendorDetails($id)
 {
       $vendor = user::findOrFail($id);
-    $vproduct = Product::where('vendor_id',$id)->get();
+      $vproduct = Product::where('vendor_id',$id)->get();
  return view('frontend.vendor.vendor_details',compact('vendor','vproduct'));
 }// End Method
 

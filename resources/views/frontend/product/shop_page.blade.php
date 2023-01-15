@@ -7,7 +7,7 @@
 @endsection
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <div class="page-header mt-30 mb-50">
     <div class="container">
@@ -194,11 +194,13 @@
                 <h5 class="section-title style-1 mb-30">Fill by price</h5>
                 <div class="price-filter">
                     <div class="price-filter-inner">
-                        <div id="slider-range" class="mb-20"></div>
-                        <div class="d-flex justify-content-between">
-                            <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong></div>
-                            <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
-                        </div>
+                        <div id="slider-range" class="price-filter-range" data-min="0" data-max="20000" ></div>
+                        <input type="" id="price_range" name="price_range" value="">
+                        <input type="text" id="amount" value="$0 - $20000" readonly="">
+
+                      <br><br>
+
+                       <button type="submit" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</button>
                     </div>
                 </div>
                 <div class="list-group">
@@ -220,25 +222,26 @@
         <div class="custome-checkbox">
         <input class="form-check-input" type="checkbox" name="category[]" id="exampleCheckbox{{ $category->id }}" value="{{ $category->category_slug }}" @if(!empty($filterCat) && in_array($category->category_slug,$filterCat)) checked @endif onchange="this.form.submit()" />
         <label class="form-check-label" for="exampleCheckbox{{ $category->id }}"><span>{{ $category->category_name }} ({{ count($products) }})</span></label>
-
         </div>
                         @endforeach
 
+                        <label class="fw-900 mt-15">Brand</label>
+                        @if(!empty($_GET['brand']))
+    @php
+    $filterBrand = explode(',',$_GET['brand']);
+    @endphp
 
-                        <label class="fw-900 mt-15">Item Condition</label>
-                        <div class="custome-checkbox">
-                            <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="" />
-                            <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                            <br />
-                            <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="" />
-                            <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
-                            <br />
-                            <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="" />
-                            <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                        </div>
-                    </div>
-                </div>
-                <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+    @endif
+
+
+                <label class="fw-900 mt-15">Brand</label>
+   @foreach($brands as $brand)
+   <div class="custome-checkbox">
+        <input class="form-check-input" type="checkbox" name="brand[]" id="exampleBrand{{ $brand->id }}" value="{{ $brand->brand_slug }}" @if(!empty($filterBrand) && in_array($brand->brand_slug,$filterBrand)) checked @endif  onchange="this.form.submit()" />
+        <label class="form-check-label" for="exampleBrand{{ $brand->id }}"><span>{{ $brand->brand_name }}  </span></label>
+
+    </div>
+    @endforeach
             </div>
         </form>
             <!-- Product sidebar Widget -->
@@ -275,7 +278,26 @@
 
 
 
-
+<script type="text/javascript">
+    $(document).ready(function (){
+        if ($('#slider-range').length > 0) {
+            const max_price = parseInt($('#slider-range').data('max'));
+            const min_price = parseInt($('#slider-range').data('min'));
+            let price_range = min_price+"-"+max_price;
+            let price = price_range.split('-');
+                $("#slider-range").slider({
+                    range: true,
+                    min: min_price,
+                    max: max_price,
+                    values: price,
+                slide: function (event, ui) {
+                $("#amount").val('$'+ui.values[0]+"-"+'$'+ui.values[1]);
+                $("#price_range").val(ui.values[0]+"-"+ui.values[1]);
+                }
+                });
+        }
+    })
+</script>
 
 
 @endsection

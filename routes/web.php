@@ -608,6 +608,7 @@ Route::controller(IndexController::class)->group(function(){
 Route::controller(ShopController::class)->group(function(){
     Route::get('/shop' , 'ShopPage')->name('shop.page');
     Route::post('/shop/filter' , 'ShopFilter')->name('shop.filter');
+
 });
 
 
