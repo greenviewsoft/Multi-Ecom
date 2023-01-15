@@ -325,6 +325,9 @@
                                 <li>
                                     <a href="{{ url('/blog') }}"> Blog  </a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('/shop') }}"> Shop  </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
