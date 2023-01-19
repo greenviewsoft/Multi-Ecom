@@ -112,6 +112,7 @@
                                         <option>New Jersey</option>
                                         <option>New Mexico</option>
                                         <option>New York</option>
+                                        <option>Bangladesh</option>
                                     </select>
                                 </form>
                             </div>
@@ -449,61 +450,47 @@ function search_result_hide(){
                             <a href="#">Mega menu</a>
                             <ul class="dropdown">
                                 <li class="menu-item-has-children">
-                                    <a href="#">Women's Fashion</a>
+                                    <a href="#">Categorys</a>
                                     <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Dresses</a></li>
-                                        <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                        <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="shop-product-right.html">Women's Sets</a></li>
+                                        @php
+                                                 $categories = App\Models\Category::orderBy('category_name','ASC')->limit(6)->get();
+                                                 @endphp
+
+                                                 @foreach ($categories as $item)
+                                                 <li>
+                                                     <a href="{{ url('product/category/'.$item->id.'/'.$item->category_slug) }}">{{ $item->category_name }} <i class="fi-rs-angle-down"></i></a>
+
+
+                                                     @php
+                                                     $subcategories = App\Models\SubCategory::where('category_id',$item->id)->orderBy('subcategory_name','ASC')->get();
+                                                     @endphp
+
+                                                             <ul class="sub-menu">
+                                                                 @foreach($subcategories as $subcategory)
+                                                                 <li><a href="{{ url('product/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ $subcategory->subcategory_name }}</a></li>
+                                                                 @endforeach
+                                                             </ul>
+                                                         </li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Jackets</a></li>
-                                        <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
-                                        <li><a href="shop-product-right.html">Genuine Leather</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                        <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                        <li><a href="shop-product-right.html">Tablets</a></li>
-                                        <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                        <li><a href="shop-product-right.html">Tablet Accessories</a></li>
-                                    </ul>
-                                </li>
+                            </li>
+
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="blog-category-fullwidth.html">Blog</a>
                             <ul class="dropdown">
-                                <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Single Product Layout</a>
-                                    <ul class="dropdown">
-                                        <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                        <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                        <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ url('/blog') }}">Blog</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
+                            <a href="#">Personal Details</a>
                             <ul class="dropdown">
-                                <li><a href="page-about.html">About Us</a></li>
-                                <li><a href="page-contact.html">Contact</a></li>
-                                <li><a href="page-account.html">My Account</a></li>
-                                <li><a href="page-login.html">Login</a></li>
-                                <li><a href="page-register.html">Register</a></li>
-                                <li><a href="page-reset-password.html">Reset password</a></li>
-                                <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                <li><a href="page-terms.html">Terms of Service</a></li>
+                                <li><a href="{{ url('/dashboard') }}">My Account</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a href="{{ url('/forgot-password') }}">Reset password</a></li>
                             </ul>
                         </li>
 
